@@ -140,7 +140,7 @@ function calculateSimulation() {
   const salaryP90 = Math.round(salaryP50 * 1.32);
   const intervalWidth = salaryP90 - salaryP10;
 
-  // Update DOM Elements
+  // Update DOM Elements with full economic breakdown
   updateSimulatorDOM({
     salaryP10,
     salaryP50,
@@ -152,7 +152,12 @@ function calculateSimulation() {
     isHybrid,
     selectedSkillIds,
     countTech,
-    countBusiness
+    countBusiness,
+    baseSalary,
+    expImpact,
+    locMult: locObj.mult,
+    locName: locObj.id === 'sf_ny' ? 'Tier 1 Hubs' : locObj.id === 'tier2' ? 'Tier 2 Metro' : locObj.id === 'tier3' ? 'Tier 3 Metro' : locObj.id === 'remote' ? 'Remote' : 'Emerging',
+    skillsTotalPremium
   });
 }
 
@@ -165,6 +170,17 @@ function updateSimulatorDOM(data) {
   const entropyEl = document.getElementById('res-entropy-val');
   const hybridBox = document.getElementById('res-hybrid-box');
   const bridgeRecContainer = document.getElementById('res-bridge-recommendations');
+
+  // Breakdown elements
+  const breakdownBase = document.getElementById('breakdown-base-val');
+  const breakdownExp = document.getElementById('breakdown-exp-val');
+  const breakdownLoc = document.getElementById('breakdown-loc-val');
+  const breakdownSkill = document.getElementById('breakdown-skill-val');
+
+  if (breakdownBase && data.baseSalary) breakdownBase.textContent = `${formatUSD(data.baseSalary)} / thn`;
+  if (breakdownExp && data.expImpact !== undefined) breakdownExp.textContent = `+${formatUSD(data.expImpact)} / thn`;
+  if (breakdownLoc && data.locMult) breakdownLoc.textContent = `× ${data.locMult.toFixed(2)} (${data.locName || 'Hub'})`;
+  if (breakdownSkill && data.skillsTotalPremium !== undefined) breakdownSkill.textContent = `+${formatUSD(data.skillsTotalPremium)} / thn`;
 
   if (p50El) p50El.textContent = formatUSD(data.salaryP50);
   if (p10El) p10El.textContent = formatUSD(data.salaryP10);
