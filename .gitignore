@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Large Model Bundles & Archives (>50MB)
+*.zip
+*.tar.gz
+*.joblib
+*.parquet
+dashboard/exports/models/
+dashboard/exports/tables_csv/*.parquet
+dashboard/exports/tables_csv/master_jobs_enriched.csv
+
+# Scratch & Temporary
+scratch/Trace/
+scratch/*.tmp
+.tempmediaStorage/
+.user_uploaded/
+
+# OS specific
+.DS_Store
+Thumbs.db

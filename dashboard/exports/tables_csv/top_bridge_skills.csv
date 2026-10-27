@@ -1,0 +1,11 @@
+entity_text,entity_type,community_id,pagerank_centrality,betweenness_centrality,degree_centrality,job_frequency
+project management,KNOWLEDGE,0,0.02648,0.2807,0.8462,276
+organized,SKILL,1,0.02434,0.25911,0.5897,216
+sales,KNOWLEDGE,2,0.01981,0.19163,0.5128,178
+accounting,KNOWLEDGE,1,0.02514,0.1525,0.5897,409
+motivated,SKILL,1,0.01824,0.1417,0.6667,350
+engineering,KNOWLEDGE,0,0.02469,0.1309,0.6154,446
+communication skills,SKILL,1,0.02536,0.12821,0.8974,909
+computer science,KNOWLEDGE,0,0.02101,0.12011,0.4615,334
+microsoft office,KNOWLEDGE,2,0.02992,0.11201,0.7949,269
+excel,KNOWLEDGE,1,0.03654,0.08097,0.8462,555

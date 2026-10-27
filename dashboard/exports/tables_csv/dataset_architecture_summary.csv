@@ -1,0 +1,9 @@
+Stage,Corpus / Component,Volume,Scientific Contribution
+1. Raw Baseline Postings,LinkedIn Global Job Postings (2023-2024),"123,849 postings",Baseline raw corpus across 100+ global industries
+2. Stratified Cleaned Sample,Curated Analytical Sample (jobs_clean.parquet),"10,000 postings","Noise-free sample with parsed salaries, years_exp, and edu_level"
+3. Gold Annotation Corpus,Label Studio Manual Annotations (CERT),"1,000 sentences",High-precision BIO domain-specific certification gold standard
+4. Semi-Supervised Expansion,JobBERT BOND Self-Training (Pseudo-Labeling),"5,000 pseudo sentences",Iterative pseudo-labeling with confidence threshold tau = 0.85
+5. Structured Entity Extraction,"Tri-Model Inference (SKILL, KNOWLEDGE, CERT)","221,630 entity spans","Domain entity distribution: 61.0% Skill, 37.6% Knowledge, 1.4% Cert"
+6. Topological Skill Graph,PMI Co-occurrence NetworkX Topology,"Top 40 Nodes, Louvain Communities",Bridge Skills (Betweenness) and Core Competencies (PageRank)
+7. Cascade Semantic Clusters,HDBSCAN + GMM Cascade Decomposition,37 Clusters + 3 Noise Subtypes,"Shannon Entropy recovery of 3,180 (31.8%) HDBSCAN noise postings"
+8. Multimodal Feature Matrix,Sequential Feature Fusion Pipeline,614 Feature Dimensions,384 SBERT + 150 TFIDF SVD + 70 Structured + 10 Task A/B Domain Features

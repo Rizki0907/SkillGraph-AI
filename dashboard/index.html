@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillGraph-AI | Labor Market Intelligence & Wage Analytics Platform</title>
+  <link rel="icon" type="image/jpeg" href="logo/skillgraph_logo_dark.jpg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="js/data.js"></script>
+</head>
+<body>
+
+<canvas id="cyber-canvas"></canvas>
+<div class="bg-ambient-glow"></div>
+
+<!-- ==============================================================================
+     BOOT SCREEN TERMINAL
+     ============================================================================== -->
+<div id="boot-screen">
+  <div class="boot-box">
+    <div class="boot-scanline"></div>
+    <div class="boot-header">
+      <div class="boot-title">
+        <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph Logo" class="boot-logo-img">
+        <span>SKILLGRAPH-AI CORE OS</span>
+      </div>
+      <div class="boot-status">INITIALIZING</div>
+    </div>
+    <div class="boot-terminal" id="boot-log"></div>
+    <div class="boot-prog-wrapper">
+      <div class="boot-prog-bar">
+        <div class="boot-prog-fill" id="boot-fill"></div>
+      </div>
+      <div class="boot-prog-info">
+        <span>MULTI-TASK PIPELINE SUBSYSTEM</span>
+        <span id="boot-pct">0%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==============================================================================
+     TOP NAVBAR
+     ============================================================================== -->
+<header class="top-navbar">
+  <div class="nav-container">
+    <div class="brand-block" onclick="nav('overview')">
+      <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph-AI Emblem" class="brand-logo-img">
+      <div class="brand-title-wrap">
+        <div class="brand-text-main">SkillGraph-AI</div>
+        <div class="brand-text-sub">LABOR MARKET INTELLIGENCE</div>
+      </div>
+    </div>
+
+    <nav class="nav-links-center">
+      <button class="nav-tab-btn active" data-page="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span>Overview</span>
+      </button>
+      <button class="nav-tab-btn" data-page="eda">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        <span>Eksplorasi Data</span>
+      </button>
+      <button class="nav-tab-btn" data-page="metodologi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <span>Arsitektur AI</span>
+      </button>
+      <button class="nav-tab-btn" data-page="simulator">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <span>Simulator Upah</span>
+      </button>
+      <button class="nav-tab-btn" data-page="regulasi">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <span>Regulasi & SDGs</span>
+      </button>
+      <button class="nav-tab-btn" data-page="artefak">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <span>Unduhan Artefak</span>
+      </button>
+    </nav>
+
+    <div class="nav-right-actions">
+      <div class="status-pill">
+        <div class="status-dot"></div>
+        <span>PP 36/2021 // READY</span>
+      </div>
+
+      <button class="cta-top-btn" onclick="nav('simulator')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="15" height="15"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <span>Uji Simulator</span>
+      </button>
+
+      <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Ganti Tema">
+        <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Buka Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-drawer" id="mobile-drawer">
+    <button class="nav-tab-btn active mobile-drawer-btn" data-page="overview">Overview</button>
+    <button class="nav-tab-btn mobile-drawer-btn" data-page="eda">Eksplorasi Data</button>
+    <button class="nav-tab-btn mobile-drawer-btn" data-page="metodologi">Arsitektur AI</button>
+    <button class="nav-tab-btn mobile-drawer-btn" data-page="simulator">Simulator Upah</button>
+    <button class="nav-tab-btn mobile-drawer-btn" data-page="regulasi">Regulasi & SDGs</button>
+    <button class="nav-tab-btn mobile-drawer-btn" data-page="artefak">Unduhan Artefak</button>
+  </div>
+</header>
+
+<!-- ==============================================================================
+     MAIN CONTENT
+     ============================================================================== -->
+<main class="main-content">
+
+  <!-- ============================================================================
+       TAB 1: OVERVIEW / BERANDA
+       ============================================================================ -->
+  <section id="tab-overview" class="tab-content active">
+    <div class="hero-wrapper">
+      <div class="hero-glow-blob"></div>
+      <div class="hero-badge-row">
+        <span class="hero-tag">Kompetisi Nasional GEMATIK VI 2026 • Cabang Data Science</span>
+        <span class="hero-tag" style="border-color: rgba(16, 185, 129, 0.4); color: var(--accent-emerald);">Akselerator Dual GPU T4 × 2 (Kaggle Cloud)</span>
+      </div>
+
+      <h1 class="hero-title">
+        Intelijen Pasar Kerja Global Berbasis <span class="text-gradient">Multi-Task NLP, Cascade Clustering,</span> dan Graph AI
+      </h1>
+
+      <p class="hero-desc">
+        Sistem intelijen ketenagakerjaan terpadu yang mengekstraksi 221.630 entitas kompetensi tak terstruktur, merekonstruksi 3.341 lowongan noise menjadi taksonomi hibrida bernilai ekonomi tinggi, serta mengestimasi koridor rentang upah objektif (P10–P90) sesuai mandat <strong>PP No. 36 Tahun 2021 tentang Pengupahan</strong>.
+      </p>
+
+      <div class="hero-team-card">
+        <div class="team-avatar-group">
+          <div class="team-avatar">RP</div>
+          <div class="team-avatar" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));">RD</div>
+        </div>
+        <div class="team-meta">
+          <div class="team-name">Tim Ditantang Habib — Universitas Negeri Surabaya (UNESA)</div>
+          <div class="team-sub">Rizki Piji Fathoni (24031554029) & Rahmawati Dian Pratiwi (24031554183) • S1 Sains Data FMIPA</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 KPI COUNTERS -->
+    <div class="metrics-grid-6">
+      <div class="metric-card">
+        <div class="metric-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        </div>
+        <div class="metric-val counter-val" data-target="123849">123,849</div>
+        <div class="metric-label">Korpus Lowongan Kerja</div>
+        <div class="metric-sub">LinkedIn 2023–2024 Global</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-wrap" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        </div>
+        <div class="metric-val counter-val" data-target="221630">221,630</div>
+        <div class="metric-label">Entitas Kompetensi Terekstrak</div>
+        <div class="metric-sub">SKILL, KNOWLEDGE, CERT</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-wrap" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        </div>
+        <div class="metric-val counter-val" data-target="107930" data-currency="true">$107,930</div>
+        <div class="metric-label">Median Upah Hybrid Roles</div>
+        <div class="metric-sub">Multidisciplinary Premium Tertinggi</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-wrap" style="background: rgba(59, 130, 246, 0.12); color: #3b82f6);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+        </div>
+        <div class="metric-val counter-val" data-target="0.6638" data-decimals="4">0.6638</div>
+        <div class="metric-label">R² Stacking Ensemble</div>
+        <div class="metric-sub">XGBoost + LightGBM + RidgeCV</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-wrap" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-amber);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+        </div>
+        <div class="metric-val counter-val" data-target="19532" data-currency="true">$19,532</div>
+        <div class="metric-label">Mean Absolute Error (MAE)</div>
+        <div class="metric-sub">Evaluasi Unseen Test Data</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon-wrap" style="background: rgba(244, 63, 94, 0.15); color: var(--accent-rose);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+        </div>
+        <div class="metric-val counter-val" data-target="14.7" data-percent="true" data-decimals="1">-14.7%</div>
+        <div class="metric-label">Reduksi Error Ablation</div>
+        <div class="metric-sub">Hemat $3,541/thn vs Baseline 1</div>
+      </div>
+    </div>
+
+    <!-- PIPELINE ARCHITECTURE CARD -->
+    <div class="content-card" style="margin-bottom: 32px;">
+      <div class="card-title-row">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          Arsitektur Komputasi Sekuensial Multi-Task End-to-End
+        </h3>
+        <span class="badge badge-core">Zero Data Leakage Protocol</span>
+      </div>
+
+      <div class="grid-3col">
+        <div style="background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <span class="badge badge-bridge">Task A</span>
+            <strong style="color: var(--accent-cyan);">JobBERT NER & Graf PMI</strong>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+            Self-training pseudo-labeling (τ = 0.85) untuk kelas sertifikasi langka. Memetakan 40 entitas teknis utama ke dalam graf asosiasi Pointwise Mutual Information (PMI). Mengungkap <strong>Project Management</strong> sebagai Bridge Skill #1 (Betweenness: 0.28070).
+          </p>
+        </div>
+
+        <div style="background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <span class="badge badge-hybrid">Task B</span>
+            <strong style="color: var(--accent-purple);">Two-Stage Cascade Clustering</strong>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+            Mengintegrasikan SBERT 384-D, UMAP 50-D, dan HDBSCAN (41 klaster). Mendekomposisi 3.341 titik noise HDBSCAN menggunakan Entropi Shannon posterior GMM (k=8), membuktikan fenomena <em>Multidisciplinary Premium</em> pada profesi hibrida ($107.930/thn).
+          </p>
+        </div>
+
+        <div style="background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+            <span class="badge badge-cert">Task C</span>
+            <strong style="color: var(--accent-emerald);">Stacking Ensemble & SHAP</strong>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+            Fusi fitur terpadu 614 dimensi dengan target encoding Bayesian out-of-fold. Mengombinasikan XGBoost dan LightGBM via RidgeCV meta-regressor ($R^2 = 0.6638$, MAE $19.532). Dilengkapi Quantile Regression (P10–P90) dan valuasi moneter SHAP.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 SDGS IMPACT MATRIX -->
+    <div class="content-card">
+      <div class="card-title-row">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          Kontribusi Strategis Terhadap Sustainable Development Goals (SDGs)
+        </h3>
+        <span class="badge badge-bridge">SDGs 2030 Agenda</span>
+      </div>
+
+      <div class="grid-2col">
+        <div style="background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border-left: 4px solid #f59e0b;">
+          <h4 style="color: #f59e0b; margin-bottom: 8px; font-size: 1rem;">SDG 4: Pendidikan Berkualitas</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            Menutup <em>curriculum-market mismatch</em> melalui identifikasi <strong>Bridge Skills</strong>. Mengarahkan kurikulum perguruan tinggi vokasi untuk mengintegrasikan keahlian jembatan lintas disiplin seperti manajemen proyek dan arsitektur sistem.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border-left: 4px solid #10b981;">
+          <h4 style="color: #10b981; margin-bottom: 8px; font-size: 1rem;">SDG 8: Pekerjaan Layak & Pertumbuhan Ekonomi</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            Mewujudkan transparansi kompensasi yang adil dan objektif. Menyediakan koridor interval upah ($P_{10}, P_{50}, P_{90}$) untuk implementasi <strong>Struktur dan Skala Upah sesuai amanat PP No. 36 Tahun 2021 tentang Pengupahan</strong>.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border-left: 4px solid #00d2ff;">
+          <h4 style="color: #00d2ff; margin-bottom: 8px; font-size: 1rem;">SDG 9: Industri, Inovasi, & Infrastruktur</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            Otomasi taksonomi okupasi dan profil kompetensi nasional (modernisasi <strong>Klasifikasi Baku Jabatan Indonesia / KBJI</strong>) menggunakan deep learning berbasis teks lowongan kerja terkini secara real-time.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-surface); padding: 20px; border-radius: var(--radius-md); border-left: 4px solid #8b5cf6;">
+          <h4 style="color: #8b5cf6; margin-bottom: 8px; font-size: 1rem;">SDG 17: Kemitraan untuk Mencapai Tujuan</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            Membangun ekosistem informasi pasar kerja terbuka yang menyatukan kepentingan regulator ketenagakerjaan (Kemnaker), perguruan tinggi, industri perekrut, dan pencari kerja global.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       TAB 2: EKSPLORASI DATA (EDA)
+       ============================================================================ -->
+  <section id="tab-eda" class="tab-content">
+    <div class="section-header">
+      <span class="section-tag">Exploratory Data Analysis</span>
+      <h2 class="section-title">Eksplorasi Karakteristik dan Asimetri Pasar Kerja</h2>
+      <p class="section-subtitle">
+        Investigasi empiris terhadap 123.849 baris data mentah dan 10.000 sampel representatif terstratifikasi mengungkap asimetri informasi dan heteroskedastisitas kompensasi.
+      </p>
+    </div>
+
+    <!-- PLOTLY EMBED 1: HEATMAP -->
+    <div class="chart-container-card">
+      <div class="chart-header">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg>
+          Peta Korelasi Interaktif: Sektor Industri vs Tingkat Senioritas
+        </h3>
+        <div class="chart-controls">
+          <span class="badge badge-core">Interactive Plotly Engine</span>
+        </div>
+      </div>
+      <div class="chart-iframe-wrap">
+        <iframe src="exports/plotly_html/eda_industry_seniority_heatmap.html" title="Industry Seniority Heatmap"></iframe>
+      </div>
+    </div>
+
+    <!-- PLOTLY EMBED 2: SALARY MULTI-DIMENSIONAL -->
+    <div class="chart-container-card">
+      <div class="chart-header">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          Distribusi Kompensasi Multidimensi: Pengalaman, Pendidikan, & Industri
+        </h3>
+        <div class="chart-controls">
+          <span class="badge badge-bridge">Kompensasi Tahunan (USD)</span>
+        </div>
+      </div>
+      <div class="chart-iframe-wrap">
+        <iframe src="exports/plotly_html/eda_salary_exp_edu.html" title="Salary vs Experience and Education"></iframe>
+      </div>
+    </div>
+
+    <!-- ASYMMETRY & SKEWNESS CARDS -->
+    <div class="grid-2col">
+      <div class="content-card">
+        <div class="card-title-row">
+          <h3>Asimetri Informasi Data Pasar Kerja</h3>
+          <span class="badge badge-cert">Missingness Pattern</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px;">
+          Evaluasi tabel kekosongan data membuktikan bahwa kolom terstruktur sengaja tidak dicantumkan oleh perekrut:
+        </p>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nama Atribut Kolom</th>
+                <th>Persentase Kosong</th>
+                <th>Status Ketersediaan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>skills_list</code></td><td><strong style="color: var(--accent-rose);">98.7%</strong></td><td>Sangat Langka (Asimetris)</td></tr>
+              <tr><td><code>med_salary</code></td><td><strong style="color: var(--accent-rose);">88.4%</strong></td><td>Sangat Langka (Asimetris)</td></tr>
+              <tr><td><code>company_size</code></td><td><strong>52.3%</strong></td><td>Sebagian Kosong</td></tr>
+              <tr><td><code>text_raw</code> (Deskripsi Kerja)</td><td><strong style="color: var(--accent-emerald);">0.0%</strong></td><td>Lengkap 100% (Sumber Emas)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-title-row">
+          <h3>Transformasi Logaritmik Kompensasi</h3>
+          <span class="badge badge-core">Skewness Reduction</span>
+        </div>
+        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 16px;">
+          <div style="flex: 1; background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); text-align: center;">
+            <div style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: 800; color: var(--accent-rose);">1.343</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Skewness Kompensasi Mentah</div>
+          </div>
+          <div style="font-size: 1.5rem; color: var(--accent-cyan);">➔</div>
+          <div style="flex: 1; background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); text-align: center;">
+            <div style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: 800; color: var(--accent-emerald);">0.177</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Skewness ln(1+y) (-86.8%)</div>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+          Transformasi logaritmik natural menekan skewness sebesar 86.8%, membentuk kurva Gaussian simetris yang memenuhi asumsi homoskedastisitas algoritma regresi pohon tergradien.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       TAB 3: ARSITEKTUR AI & METODOLOGI
+       ============================================================================ -->
+  <section id="tab-metodologi" class="tab-content">
+    <div class="section-header">
+      <span class="section-tag">Machine Learning & NLP Architecture</span>
+      <h2 class="section-title">Arsitektur Multi-Task NLP, Graf PMI, & Stacking</h2>
+      <p class="section-subtitle">
+        Pelajari rincian teknis, evaluasi model, dan pembuktian ilmiah pada setiap milestone metodologi SkillGraph-AI.
+      </p>
+    </div>
+
+    <!-- SUBTABS BAR -->
+    <div class="subtabs-wrapper">
+      <div class="subtabs-bar">
+        <button class="subtab-btn active" data-subpage="task-a">Task A: JobBERT NER & Graf PMI</button>
+        <button class="subtab-btn" data-subpage="task-b">Task B: Two-Stage Cascade Clustering</button>
+        <button class="subtab-btn" data-subpage="task-c">Task C: Stacking 614-D & Valuasi SHAP</button>
+      </div>
+
+      <!-- SUBPANEL TASK A -->
+      <div id="subpanel-task-a" class="subtab-panel active">
+        <div class="chart-container-card">
+          <div class="chart-header">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+              Topologi Graf Kompetensi Asosiasi Pointwise Mutual Information (PMI)
+            </h3>
+            <span class="badge badge-bridge">Interactive Skill Network</span>
+          </div>
+          <div class="chart-iframe-wrap">
+            <iframe src="exports/plotly_html/plotly_skill_network.html" title="Interactive Skill Network"></iframe>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div class="content-card">
+            <div class="card-title-row">
+              <h3>Top 10 Bridge Skills (Betweenness Centrality)</h3>
+              <span class="badge badge-bridge">Jembatan Lintas Disiplin</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Entitas Keahlian</th>
+                    <th>Tipe</th>
+                    <th>Betweenness</th>
+                    <th>PageRank</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong style="color: var(--accent-cyan);">Project Management</strong></td><td><span class="badge badge-core">KNOWLEDGE</span></td><td><strong>0.28070</strong></td><td>0.02648</td></tr>
+                  <tr><td><strong>Organized</strong></td><td><span class="badge badge-bridge">SKILL</span></td><td><strong>0.25911</strong></td><td>0.02434</td></tr>
+                  <tr><td><strong>Sales</strong></td><td><span class="badge badge-core">KNOWLEDGE</span></td><td><strong>0.19163</strong></td><td>0.01981</td></tr>
+                  <tr><td><strong>Accounting</strong></td><td><span class="badge badge-core">KNOWLEDGE</span></td><td><strong>0.15250</strong></td><td>0.02514</td></tr>
+                  <tr><td><strong>Motivated</strong></td><td><span class="badge badge-bridge">SKILL</span></td><td><strong>0.14170</strong></td><td>0.01824</td></tr>
+                  <tr><td><strong>Engineering</strong></td><td><span class="badge badge-core">KNOWLEDGE</span></td><td><strong>0.13090</strong></td><td>0.02469</td></tr>
+                  <tr><td><strong>Communication Skills</strong></td><td><span class="badge badge-bridge">SKILL</span></td><td><strong>0.12821</strong></td><td>0.02536</td></tr>
+                  <tr><td><strong>Computer Science</strong></td><td><span class="badge badge-core">KNOWLEDGE</span></td><td><strong>0.12011</strong></td><td>0.02101</td></tr>
+                  <tr><td><strong>Microsoft Office</strong></td><td><span class="badge badge-core">KNOWLEDGE</span></td><td><strong>0.11201</strong></td><td>0.02992</td></tr>
+                  <tr><td><strong>Excel</strong></td><td><span class="badge badge-core">KNOWLEDGE</span></td><td><strong>0.08097</strong></td><td><strong style="color: var(--accent-emerald);">0.03654</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-title-row">
+              <h3>Komparasi Betweenness vs PageRank</h3>
+              <span class="badge badge-core">Centrality Metrics</span>
+            </div>
+            <div style="height: 320px; position: relative;">
+              <canvas id="chart-bridge-skills"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBPANEL TASK B -->
+      <div id="subpanel-task-b" class="subtab-panel" style="display: none;">
+        <div class="chart-container-card">
+          <div class="chart-header">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Peta Galaksi Okupasi 2D UMAP & Two-Stage Cascade Clustering
+            </h3>
+            <span class="badge badge-hybrid">Semantic Galaxy</span>
+          </div>
+          <div class="chart-iframe-wrap">
+            <iframe src="exports/plotly_html/plotly_job_galaxy_cascade.html" title="Job Galaxy Cascade"></iframe>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <div class="content-card">
+            <div class="card-title-row">
+              <h3>Dekomposisi Titik Noise (Cascade Sub-types)</h3>
+              <span class="badge badge-hybrid">Shannon Entropy</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Kategori Cascade</th>
+                    <th>Jumlah</th>
+                    <th>Median Upah</th>
+                    <th>Entitas Teknis</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><span class="badge badge-core">Core Dense Cluster</span></td><td>6,659</td><td>$90,000</td><td>8.24</td></tr>
+                  <tr><td><span class="badge badge-niche">Niche / Ultra-Specialized</span></td><td>3,319</td><td>$93,000</td><td>8.50</td></tr>
+                  <tr><td><span class="badge badge-hybrid">Hybrid / Cross-Functional</span></td><td><strong>14</strong></td><td><strong style="color: var(--accent-purple);">$107,930</strong></td><td><strong style="color: var(--accent-purple);">15.21</strong></td></tr>
+                  <tr><td><span class="badge badge-generic">Generic Staffing / Boilerplate</span></td><td>8</td><td>$72,550</td><td>2.38</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="margin-top: 14px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
+              ✨ <strong>Temuan Utama:</strong> Profesi hibrida menuntut keahlian teknis tertinggi (15.21 entitas) dan diberi kompensasi tertinggi di pasar ($107.930/thn), membuktikan fenomena <em>Multidisciplinary Premium</em>.
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-title-row">
+              <h3>Median Kompensasi per Kategori Cascade</h3>
+              <span class="badge badge-hybrid">Multidisciplinary Premium</span>
+            </div>
+            <div style="height: 320px; position: relative;">
+              <canvas id="chart-cascade"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBPANEL TASK C -->
+      <div id="subpanel-task-c" class="subtab-panel" style="display: none;">
+        <div class="grid-2col">
+          <div class="content-card">
+            <div class="card-title-row">
+              <h3>Ablation Study: Pembuktian Fusi 614-D</h3>
+              <span class="badge badge-core">Error Reduction -14.7%</span>
+            </div>
+            <div style="height: 280px; position: relative; margin-bottom: 16px;">
+              <canvas id="chart-ablation"></canvas>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              Fusi representasi sekuensial penuh (614-D) memangkas galat upah dari <strong>$24,052/thn</strong> (Baseline 1) menjadi <strong>$20,511/thn</strong> (Proposed Full), mereduksi error sebesar <strong>$3,541/tahun (-14.7%)</strong>.
+            </p>
+          </div>
+
+          <div class="content-card">
+            <div class="card-title-row">
+              <h3>Valuasi Marjinal Ekonomi Berbasis SHAP (USD/thn)</h3>
+              <span class="badge badge-bridge">PP No. 36/2021 Alignment</span>
+            </div>
+            <div style="height: 280px; position: relative; margin-bottom: 16px;">
+              <canvas id="chart-shap"></canvas>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+              Tiap 1 tahun pengalaman bernilai tambah rata-rata <strong>+$1,676.60/thn</strong>, penguasaan arsitektur sistem bernilai <strong>+$4,721.62/thn</strong>, dan interaksi senioritas di hub tier 1 menyumbang <strong>+$7,220.41/thn</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       TAB 4: SIMULATOR NEGOSIASI UPAH & BRIDGE SKILLS
+       ============================================================================ -->
+  <section id="tab-simulator" class="tab-content">
+    <div class="section-header">
+      <span class="section-tag">Interactive Simulation Engine</span>
+      <h2 class="section-title">Simulator Koridor Negosiasi Upah & Bridge Skills</h2>
+      <p class="section-subtitle">
+        Hitung estimasi nilai tengah kompensasi wajar ($P_{50}$), koridor batas negosiasi ($P_{10}$–$P_{90}$), klasifikasi peran cascade, dan rekomendasi keahlian jembatan secara real-time.
+      </p>
+    </div>
+
+    <div class="simulator-layout">
+      <!-- INPUT PANEL -->
+      <div class="sim-input-panel">
+        <h3 style="font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Konfigurasi Profil Profesional
+        </h3>
+
+        <div class="form-group">
+          <label class="form-label">Sektor Industri Pekerjaan</label>
+          <select id="sim-industry" class="form-select"></select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Wilayah Geografis Penempatan</label>
+          <select id="sim-location" class="form-select"></select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Jenjang Senioritas Karir</label>
+          <select id="sim-seniority" class="form-select"></select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            <span>Tahun Pengalaman Kerja</span>
+            <span id="sim-exp-badge" class="slider-val-badge">5.0 Tahun</span>
+          </label>
+          <div class="range-slider-wrap">
+            <input type="range" id="sim-exp-slider" class="range-slider" min="0" max="20" step="0.5" value="5">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label">
+            <span>Portofolio Keahlian & Sertifikasi</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Pilih kompetensi yang dikuasai</span>
+          </label>
+          <div id="sim-skills-container" class="skills-checkbox-grid"></div>
+        </div>
+      </div>
+
+      <!-- OUTPUT PANEL -->
+      <div class="sim-output-panel">
+        <!-- CORRIDOR SALARY CARD -->
+        <div class="result-corridor-card">
+          <div class="corridor-header">
+            <span class="corridor-header-tag">Koridor Upah Kuantil (PP 36/2021)</span>
+            <span id="res-archetype-badge" class="badge badge-core">Core Dense Cluster</span>
+          </div>
+
+          <div class="corridor-salary-main">
+            <div id="res-p50-val" class="corridor-p50-val">$105,400</div>
+            <div class="corridor-p50-label">Estimasi Nilai Tengah Pasar Wajar (P50 Median)</div>
+          </div>
+
+          <div class="corridor-range-bar-wrap">
+            <div class="corridor-range-values">
+              <div>P10 (Floor): <strong id="res-p10-val" class="range-p10">$82,200</strong></div>
+              <div>P90 (Ceiling): <strong id="res-p90-val" class="range-p90">$139,100</strong></div>
+            </div>
+            <div class="corridor-bar-track">
+              <div class="corridor-bar-fill"></div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-top: 8px;">
+            <span id="res-width-val">Rentang Negosiasi (MPIW): $56,900/thn</span>
+            <span id="res-entropy-val">Entropi: 0.0080</span>
+          </div>
+
+          <!-- MULTIDISCIPLINARY PREMIUM ALERT -->
+          <div id="res-hybrid-box" class="premium-alert-box" style="display: none;">
+            <div class="premium-alert-icon">⚡</div>
+            <div>
+              <div class="premium-alert-title">Multidisciplinary Premium Terdeteksi!</div>
+              <div class="premium-alert-desc">
+                Profil mengombinasikan keahlian rekayasa teknis dan eksekusi bisnis, menghasilkan valuasi premi pasar <strong>+$17,930/tahun</strong> di atas rata-rata.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BRIDGE SKILL RECOMMENDER -->
+        <div class="bridge-rec-card">
+          <div class="bridge-rec-header">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20" style="color: var(--accent-emerald);"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <span>Rekomendasi Bridge Skills untuk Eskalasi Upah</span>
+          </div>
+          <div id="res-bridge-recommendations"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLOTLY EMBED QUANTILE SALARY CHART -->
+    <div class="chart-container-card">
+      <div class="chart-header">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          Simulator Interaktif Pita Rentang Kuantil Kompensasi (Plotly)
+        </h3>
+        <span class="badge badge-bridge">Asymmetric Pinball Loss Model</span>
+      </div>
+      <div class="chart-iframe-wrap">
+        <iframe src="exports/plotly_html/plotly_quantile_salary.html" title="Interactive Quantile Salary Simulator"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       TAB 5: KEPATUHAN REGULASI & KEBIJAKAN
+       ============================================================================ -->
+  <section id="tab-regulasi" class="tab-content">
+    <div class="section-header">
+      <span class="section-tag">National Policy Alignment</span>
+      <h2 class="section-title">Penyelarasan Regulasi Nasional & Kebijakan SDGs</h2>
+      <p class="section-subtitle">
+        Bagaimana SkillGraph-AI dioperasionalkan sebagai pedoman baku nasional penyusunan Struktur dan Skala Upah serta modernisasi Klasifikasi Baku Jabatan Indonesia (KBJI).
+      </p>
+    </div>
+
+    <div class="grid-2col">
+      <div class="content-card">
+        <div class="card-title-row">
+          <h3>Implementasi PP No. 36 Tahun 2021 tentang Pengupahan</h3>
+          <span class="badge badge-bridge">Mandat PP 36/2021</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+          <strong>Pasal 21 PP No. 36 Tahun 2021</strong> mewajibkan setiap perusahaan menyusun dan menerapkan <strong>Struktur dan Skala Upah Objektif</strong> dengan memperhatikan golongan, jabatan, masa kerja, pendidikan, dan kompetensi.
+        </p>
+        <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border-left: 4px solid var(--accent-emerald); margin-bottom: 16px;">
+          <h4 style="color: var(--accent-emerald); margin-bottom: 6px;">Penyediaan Koridor Upah Objektif Kuantil (P10–P90):</h4>
+          <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
+            Selama ini penetapan batas upah minimum dan maksimum suatu jabatan seringkali bersifat subjektif. Model SkillGraph-AI menetapkan <strong>P10 sebagai batas bawah pengaman</strong> (mencegah pekerja underpaid), <strong>P50 sebagai patokan wajar median industri</strong>, dan <strong>P90 sebagai plafon kompetitif</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-title-row">
+          <h3>Modernisasi Klasifikasi Baku Jabatan Indonesia (KBJI)</h3>
+          <span class="badge badge-hybrid">Inovasi BPS & Kemnaker</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+          Badan Pusat Statistik (BPS) dan Kementerian Ketenagakerjaan (Kemnaker) RI menghadapi tantangan lambatnya pemutakhiran taksonomi okupasi nasional dalam menangkap profesi baru di era kecerdasan artifisial.
+        </p>
+        <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple); margin-bottom: 16px;">
+          <h4 style="color: var(--accent-purple); margin-bottom: 6px;">Dekomposisi Cascade untuk Jabatan Hibrida Baru:</h4>
+          <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
+            Metodologi <em>Two-Stage Cascade Clustering</em> mampu memilah lowongan kerja yang belum memiliki kode baku jabatan KBJI dan mengidentifikasi profesi <strong>Hybrid Cross-Functional</strong> baru (misal: <em>AI Ethics Officer, Bio-Cloud Architect</em>) secara otomatis dari penambangan teks bebas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       TAB 6: REPOSITORI ARTEFAK & UNDUHAN
+       ============================================================================ -->
+  <section id="tab-artefak" class="tab-content">
+    <div class="section-header">
+      <span class="section-tag">Artifacts & Data Repository</span>
+      <h2 class="section-title">Pusat Unduhan Data, Tabel Metrik, & Artefak Produksi</h2>
+      <p class="section-subtitle">
+        Akses langsung seluruh luaran riset, model terkompresi, visualisasi 300 DPI, dan tabel empiris standar CSV.
+      </p>
+    </div>
+
+    <div class="grid-3col">
+      <div class="content-card">
+        <div class="card-title-row">
+          <h3>Tabel Evaluasi CSV</h3>
+          <span class="badge badge-core">Empirical Data</span>
+        </div>
+        <ul style="list-style: none; font-size: 0.85rem; line-height: 2;">
+          <li>📄 <a href="exports/tables_csv/top_bridge_skills.csv" download style="color: var(--accent-cyan);">top_bridge_skills.csv</a></li>
+          <li>📄 <a href="exports/tables_csv/full_ner_centrality.csv" download style="color: var(--accent-cyan);">full_ner_centrality.csv</a></li>
+          <li>📄 <a href="exports/tables_csv/noise_cascade_summary.csv" download style="color: var(--accent-cyan);">noise_cascade_summary.csv</a></li>
+          <li>📄 <a href="exports/tables_csv/table_ablation_study.csv" download style="color: var(--accent-cyan);">table_ablation_study.csv</a></li>
+          <li>📄 <a href="exports/tables_csv/table_shap_monetary_valuation.csv" download style="color: var(--accent-cyan);">table_shap_monetary_valuation.csv</a></li>
+          <li>📄 <a href="exports/tables_csv/table_quantile_metrics.csv" download style="color: var(--accent-cyan);">table_quantile_metrics.csv</a></li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <div class="card-title-row">
+          <h3>Visualisasi 300 DPI</h3>
+          <span class="badge badge-bridge">Publication Quality</span>
+        </div>
+        <ul style="list-style: none; font-size: 0.85rem; line-height: 2;">
+          <li>🖼️ <a href="figures/fig_ner_network.png" target="_blank" style="color: var(--accent-cyan);">fig_ner_network.png</a></li>
+          <li>🖼️ <a href="figures/fig_noise_cascade.png" target="_blank" style="color: var(--accent-cyan);">fig_noise_cascade.png</a></li>
+          <li>🖼️ <a href="figures/fig_ablation_study.png" target="_blank" style="color: var(--accent-cyan);">fig_ablation_study.png</a></li>
+          <li>🖼️ <a href="figures/fig_quantile_intervals.png" target="_blank" style="color: var(--accent-cyan);">fig_quantile_intervals.png</a></li>
+          <li>🖼️ <a href="figures/fig_shap_beeswarm.png" target="_blank" style="color: var(--accent-cyan);">fig_shap_beeswarm.png</a></li>
+          <li>🖼️ <a href="figures/fig_shap_monetary_bar.png" target="_blank" style="color: var(--accent-cyan);">fig_shap_monetary_bar.png</a></li>
+        </ul>
+      </div>
+
+      <div class="content-card">
+        <div class="card-title-row">
+          <h3>Model & Dashboard HTML</h3>
+          <span class="badge badge-hybrid">Production Suite</span>
+        </div>
+        <ul style="list-style: none; font-size: 0.85rem; line-height: 2;">
+          <li>🌐 <a href="exports/plotly_html/plotly_skill_network.html" target="_blank" style="color: var(--accent-cyan);">plotly_skill_network.html</a></li>
+          <li>🌐 <a href="exports/plotly_html/plotly_job_galaxy_cascade.html" target="_blank" style="color: var(--accent-cyan);">plotly_job_galaxy_cascade.html</a></li>
+          <li>🌐 <a href="exports/plotly_html/plotly_quantile_salary.html" target="_blank" style="color: var(--accent-cyan);">plotly_quantile_salary.html</a></li>
+          <li>🌐 <a href="exports/plotly_html/eda_industry_seniority_heatmap.html" target="_blank" style="color: var(--accent-cyan);">eda_industry_seniority_heatmap.html</a></li>
+          <li>🌐 <a href="exports/plotly_html/eda_salary_exp_edu.html" target="_blank" style="color: var(--accent-cyan);">eda_salary_exp_edu.html</a></li>
+          <li>📦 <strong style="color: var(--text-primary);">production_bundle.joblib</strong> (Tersimpan di direktori exports/models/)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       FOOTER
+       ============================================================================ -->
+  <footer class="footer-wrap">
+    <div class="footer-left">
+      <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph Logo" style="height: 28px;">
+      <div>
+        <strong>SkillGraph-AI</strong> • Hak Cipta &copy; 2026 Tim Ditantang Habib (UNESA)
+      </div>
+    </div>
+    <div class="footer-right">
+      <span>Kompetisi Nasional GEMATIK VI 2026</span>
+      <span>•</span>
+      <span>Universitas Teknokrat Indonesia</span>
+    </div>
+  </footer>
+
+</main>
+
+<script src="js/charts.js"></script>
+<script src="js/simulasi.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

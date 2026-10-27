@@ -1,0 +1,5 @@
+Entity_Span,precision,recall,f1-score,support
+CERT,0.25,0.3,0.2727272727272727,60.0
+micro avg,0.25,0.3,0.2727272727272727,60.0
+macro avg,0.25,0.3,0.2727272727272727,60.0
+weighted avg,0.25,0.3,0.2727272727272727,60.0

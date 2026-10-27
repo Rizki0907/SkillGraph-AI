@@ -1,0 +1,4 @@
+Configuration,Feature_Dimensions,MAE_USD,RMSE_USD,R2_Score
+Baseline 1: Structured + Keywords,70,24052.09,32444.27,0.5229
+Baseline 2: Structured + Text (604-D),604,20576.1,28347.68,0.6357
+Proposed: SkillGraph-AI Full (614-D),614,20511.52,28454.97,0.633
