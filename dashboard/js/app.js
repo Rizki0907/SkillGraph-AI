@@ -1,12 +1,13 @@
 /**
  * SkillGraph-AI Application Controller
- * Manages SPA Routing, Themes, Boot Sequence, Particle Canvas, and UI Events
+ * Manages SPA Routing, Themes, Boot Sequence, Particle Canvas, 3D Graph Mesh, and UI Events
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initBootSequence();
   initParticleCanvas();
+  init3DGraphMesh();
   initNavigation();
   initSimulator();
   initCharts();
@@ -30,8 +31,8 @@ function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('skillgraph_theme', theme);
 
-  // Dynamic Logo Swap
-  const brandLogos = document.querySelectorAll('.brand-logo-img, .boot-logo-img');
+  // Dynamic Logo Swap across Navbar and Hero Banner
+  const brandLogos = document.querySelectorAll('.brand-logo-img, .boot-logo-img, .hero-brand-logo-img');
   const logoSrc = theme === 'light' ? 'logo/skillgraph_logo_light.jpg' : 'logo/skillgraph_logo_dark.jpg';
   brandLogos.forEach(img => {
     img.src = logoSrc;
@@ -64,12 +65,12 @@ function initBootSequence() {
   if (!bootScreen || !bootLog) return;
 
   const logs = [
-    { text: ">>> Initializing SkillGraph-AI Subsystem [Dual T4 GPU Mode]...", delay: 200, pct: 15 },
-    { text: ">>> Loading Tokenizer & Checkpoint: jjzha/jobbert-base-cased [OK]", delay: 450, pct: 35 },
-    { text: ">>> Loading PMI Competency Graph & 40 Technical Entities [OK]", delay: 700, pct: 55 },
-    { text: ">>> Reconstructing 3,341 HDBSCAN Noise Postings via GMM Cascade [OK]", delay: 950, pct: 75 },
-    { text: ">>> Initializing 614-D Multimodal Feature Matrix & Stacking Ensemble [OK]", delay: 1200, pct: 90 },
-    { text: ">>> Quantum Quantile Corridors (P10, P50, P90) & TreeSHAP Engine: READY", delay: 1400, pct: 100, success: true }
+    { text: ">>> Initializing SkillGraph-AI Subsystem [Dual T4 GPU Mode]...", delay: 150, pct: 15 },
+    { text: ">>> Loading Tokenizer & Checkpoint: jjzha/jobbert-base-cased [OK]", delay: 350, pct: 35 },
+    { text: ">>> Loading PMI Competency Graph & 40 Technical Entities [OK]", delay: 600, pct: 55 },
+    { text: ">>> Reconstructing 3,341 HDBSCAN Noise Postings via GMM Cascade [OK]", delay: 850, pct: 75 },
+    { text: ">>> Initializing 614-D Multimodal Feature Matrix & Stacking Ensemble [OK]", delay: 1100, pct: 90 },
+    { text: ">>> Quantum Quantile Corridors (P10, P50, P90) & TreeSHAP Engine: READY", delay: 1300, pct: 100, success: true }
   ];
 
   logs.forEach(step => {
@@ -86,7 +87,150 @@ function initBootSequence() {
   setTimeout(() => {
     bootScreen.classList.add('boot-done');
     animateCounters();
-  }, 1750);
+  }, 1600);
+}
+
+/* ==============================================================================
+   INTERACTIVE 3D KNOWLEDGE GRAPH HOLOGRAM STAGE
+   ============================================================================== */
+function init3DGraphMesh() {
+  const canvas = document.getElementById('graph-mesh-canvas');
+  const stage = document.getElementById('graph-stage');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const size = canvas.width = canvas.height = 340;
+  const center = size / 2;
+  const fov = 280;
+
+  // 3D Nodes Definition
+  const nodes = [
+    { id: 0, label: "SkillGraph-AI", x: 0, y: 0, z: 0, isCore: true, radius: 8, color: '#00d2ff' },
+    { id: 1, label: "Project Mgmt", x: 0, y: -80, z: 45, isBridge: true, radius: 6.5, color: '#10b981' },
+    { id: 2, label: "Python", x: -75, y: -35, z: -35, radius: 5.5, color: '#00d2ff' },
+    { id: 3, label: "AWS Cloud", x: 75, y: -35, z: -35, radius: 5.5, color: '#0066ff' },
+    { id: 4, label: "Machine Learning", x: -55, y: 50, z: 40, radius: 5.5, color: '#8b5cf6' },
+    { id: 5, label: "Accounting", x: 55, y: 50, z: 40, radius: 5, color: '#f59e0b' },
+    { id: 6, label: "Sales", x: -80, y: 5, z: 50, radius: 5, color: '#f59e0b' },
+    { id: 7, label: "Communication", x: 80, y: 5, z: 50, isBridge: true, radius: 5.5, color: '#10b981' },
+    { id: 8, label: "Computer Sci", x: 0, y: 85, z: -45, radius: 5, color: '#00d2ff' },
+    { id: 9, label: "Docker/DevOps", x: -40, y: -65, z: -55, radius: 4.8, color: '#0066ff' },
+    { id: 10, label: "Excel", x: 40, y: -65, z: -55, radius: 5.2, color: '#10b981' }
+  ];
+
+  // 3D Connecting Edges
+  const edges = [
+    [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9], [0, 10],
+    [1, 2], [1, 3], [1, 6], [1, 5], [1, 7], // Project Management Bridging
+    [2, 4], [2, 8], [2, 9], // Python Tech Stack
+    [3, 9], [3, 8], // Cloud Stack
+    [5, 6], [5, 10], [6, 7] // Business Stack
+  ];
+
+  let rotX = -0.15;
+  let rotY = 0;
+  let targetRotX = -0.15;
+  let targetRotY = 0;
+  let pulsePhase = 0;
+
+  if (stage) {
+    stage.addEventListener('mousemove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const nx = (e.clientX - rect.left) / rect.width - 0.5;
+      const ny = (e.clientY - rect.top) / rect.height - 0.5;
+      targetRotY = nx * 1.8;
+      targetRotX = -ny * 1.8;
+    });
+
+    stage.addEventListener('mouseleave', () => {
+      targetRotX = -0.15;
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, size, size);
+
+    // Auto idle rotation
+    targetRotY += 0.006;
+    rotX += (targetRotX - rotX) * 0.08;
+    rotY += (targetRotY - rotY) * 0.08;
+    pulsePhase += 0.04;
+
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+
+    // Project 3D to 2D
+    const projected = nodes.map(n => {
+      // Rotation X
+      let y1 = n.y * Math.cos(rotX) - n.z * Math.sin(rotX);
+      let z1 = n.y * Math.sin(rotX) + n.z * Math.cos(rotX);
+      // Rotation Y
+      let x2 = n.x * Math.cos(rotY) + z1 * Math.sin(rotY);
+      let z2 = -n.x * Math.sin(rotY) + z1 * Math.cos(rotY);
+
+      let scale = fov / (fov + z2 + 80);
+      let sx = center + x2 * scale;
+      let sy = center + y1 * scale;
+
+      return { ...n, sx, sy, sz: z2, scale };
+    });
+
+    // Draw Edges with depth sorting
+    edges.forEach(([i1, i2]) => {
+      const p1 = projected[i1];
+      const p2 = projected[i2];
+      const avgZ = (p1.sz + p2.sz) / 2;
+      const alpha = Math.max(0.12, Math.min(0.7, 0.45 + (avgZ / 140) * 0.35));
+
+      ctx.beginPath();
+      ctx.moveTo(p1.sx, p1.sy);
+      ctx.lineTo(p2.sx, p2.sy);
+      ctx.strokeStyle = isDark ? `rgba(0, 210, 255, ${alpha})` : `rgba(2, 132, 199, ${alpha * 0.8})`;
+      ctx.lineWidth = (p1.isCore || p2.isCore || p1.isBridge || p2.isBridge) ? 1.6 : 0.9;
+      ctx.stroke();
+
+      // Traveling Synaptic Energy Pulse
+      let pulseProg = (pulsePhase + (i1 * 0.35 + i2 * 0.25)) % 1;
+      let px = p1.sx + (p2.sx - p1.sx) * pulseProg;
+      let py = p1.sy + (p2.sy - p1.sy) * pulseProg;
+      ctx.beginPath();
+      ctx.arc(px, py, 1.8 * p1.scale, 0, Math.PI * 2);
+      ctx.fillStyle = isDark ? 'rgba(0, 240, 255, 0.9)' : 'rgba(16, 185, 129, 0.9)';
+      ctx.fill();
+    });
+
+    // Sort nodes back-to-front
+    const sortedNodes = [...projected].sort((a, b) => a.sz - b.sz);
+
+    // Draw Nodes
+    sortedNodes.forEach(p => {
+      const r = p.radius * p.scale;
+      // Outer Glow Halo
+      ctx.beginPath();
+      ctx.arc(p.sx, p.sy, r * (p.isCore ? 2.4 : 1.7), 0, Math.PI * 2);
+      ctx.fillStyle = p.isCore ? (isDark ? 'rgba(0, 210, 255, 0.25)' : 'rgba(2, 132, 199, 0.2)') : (isDark ? 'rgba(16, 185, 129, 0.2)' : 'rgba(5, 150, 105, 0.15)');
+      ctx.fill();
+
+      // Solid Node Circle
+      ctx.beginPath();
+      ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = p.isCore ? 14 : 6;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Label Text for Key Nodes
+      if (p.isCore || p.isBridge || p.sz > -20) {
+        ctx.font = `${p.isCore ? 'bold 11.5px' : '600 9.5px'} Plus Jakarta Sans, sans-serif`;
+        ctx.fillStyle = isDark ? '#ffffff' : '#0f172a';
+        ctx.textAlign = 'center';
+        ctx.fillText(p.label, p.sx, p.sy - (r + 4));
+      }
+    });
+
+    requestAnimationFrame(render);
+  }
+
+  render();
 }
 
 /* ==============================================================================
@@ -149,8 +293,10 @@ function switchSubtab(subpageId, triggerBtn) {
   container.querySelectorAll('.subtab-panel').forEach(panel => {
     if (panel.id === `subpanel-${subpageId}`) {
       panel.classList.add('active');
+      panel.style.display = 'block';
     } else {
       panel.classList.remove('active');
+      panel.style.display = 'none';
     }
   });
 

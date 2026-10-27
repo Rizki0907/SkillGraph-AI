@@ -1361,3 +1361,284 @@ table.data-table tr:hover td {
     font-size: 1.7rem;
   }
 }
+
+/* ==============================================================================
+   HERO BRAND BANNER & 3D GRAPH HOLOGRAM STAGE
+   ============================================================================== */
+.hero-brand-banner {
+  margin-bottom: 22px;
+  display: inline-block;
+}
+
+.hero-brand-logo-img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 18px rgba(0, 210, 255, 0.25));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-brand-banner:hover .hero-brand-logo-img {
+  transform: scale(1.03);
+}
+
+.hero-cyber-frame {
+  position: relative;
+  background: linear-gradient(135deg, rgba(16, 23, 42, 0.88) 0%, rgba(10, 15, 28, 0.96) 100%);
+  border: 1px solid var(--border-glow);
+  border-radius: var(--radius-lg);
+  padding: 44px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  box-shadow: var(--shadow-card), 0 0 30px rgba(0, 210, 255, 0.12);
+  overflow: hidden;
+}
+
+[data-theme="light"] .hero-cyber-frame {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-color: rgba(2, 132, 199, 0.3);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.hero-main-left {
+  flex: 1.25;
+  z-index: 2;
+}
+
+.hero-main-right {
+  flex: 0.85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 360px;
+  z-index: 2;
+}
+
+.graph-hologram-stage {
+  position: relative;
+  width: 340px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.graph-hologram-stage:active {
+  cursor: grabbing;
+}
+
+#graph-mesh-canvas {
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 5;
+  filter: drop-shadow(0 0 22px rgba(0, 210, 255, 0.45));
+}
+
+[data-theme="light"] #graph-mesh-canvas {
+  filter: drop-shadow(0 0 16px rgba(2, 132, 199, 0.3));
+}
+
+.holo-orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbit-1 {
+  width: 330px;
+  height: 330px;
+  border: 1.5px dashed rgba(0, 210, 255, 0.4);
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.15);
+  animation: rotate-cw 25s linear infinite;
+}
+
+.orbit-2 {
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+  animation: rotate-ccw 18s linear infinite;
+}
+
+@keyframes rotate-cw { to { transform: rotate(360deg); } }
+@keyframes rotate-ccw { to { transform: rotate(-360deg); } }
+
+.holo-scan-beam {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  box-shadow: 0 0 14px var(--accent-cyan);
+  animation: scan-vertical 3.5s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 6;
+  opacity: 0.75;
+}
+
+@keyframes scan-vertical {
+  0% { top: 15%; opacity: 0.3; }
+  50% { opacity: 0.9; }
+  100% { top: 85%; opacity: 0.3; }
+}
+
+.holo-landmark-tag {
+  position: absolute;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(11, 17, 32, 0.88);
+  border: 1px solid var(--border-glow);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 7;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+[data-theme="light"] .holo-landmark-tag {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(2, 132, 199, 0.4);
+  color: #0284c7;
+}
+
+/* ==============================================================================
+   INSIGHT & INTERPRETASI ANALITIS CARDS (FOR EDA)
+   ============================================================================== */
+.insight-card {
+  background: linear-gradient(135deg, rgba(16, 23, 42, 0.85) 0%, rgba(11, 17, 32, 0.95) 100%);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent-cyan);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  margin-top: 18px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-normal);
+}
+
+[data-theme="light"] .insight-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-color: rgba(15, 23, 42, 0.1);
+  border-left-color: #0284c7;
+}
+
+.insight-card:hover {
+  border-color: var(--border-glow);
+  border-left-color: var(--accent-cyan);
+  box-shadow: var(--shadow-glow);
+}
+
+.insight-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.insight-header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.insight-header-title svg {
+  color: var(--accent-cyan);
+}
+
+.insight-body {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.insight-points {
+  list-style: none;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.insight-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.insight-point-bullet {
+  color: var(--accent-cyan);
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.insight-stat-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.insight-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-primary);
+}
+
+.insight-stat-pill strong {
+  color: var(--accent-cyan);
+}
+
+.eda-figure-img-wrap {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  background: var(--bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.eda-figure-img-wrap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 992px) {
+  .hero-cyber-frame {
+    flex-direction: column;
+  }
+  .hero-main-right {
+    min-height: 320px;
+    width: 100%;
+  }
+}

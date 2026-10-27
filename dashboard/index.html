@@ -121,29 +121,64 @@
        TAB 1: OVERVIEW / BERANDA
        ============================================================================ -->
   <section id="tab-overview" class="tab-content active">
-    <div class="hero-wrapper">
+    <!-- HERO CYBER FRAME WITH 3D GRAPH HOLOGRAM STAGE -->
+    <div class="hero-cyber-frame">
       <div class="hero-glow-blob"></div>
-      <div class="hero-badge-row">
-        <span class="hero-tag">Kompetisi Nasional GEMATIK VI 2026 • Cabang Data Science</span>
-        <span class="hero-tag" style="border-color: rgba(16, 185, 129, 0.4); color: var(--accent-emerald);">Akselerator Dual GPU T4 × 2 (Kaggle Cloud)</span>
+
+      <!-- LEFT SIDE: LOGO BANNER, HEADLINE, & METADATA -->
+      <div class="hero-main-left">
+        <!-- BRAND LOGO BANNER -->
+        <div class="hero-brand-banner">
+          <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph-AI Logo" class="hero-brand-logo-img brand-logo-full">
+        </div>
+
+        <div class="hero-badge-row">
+          <span class="hero-tag">Kompetisi Nasional GEMATIK VI 2026 • Cabang Data Science</span>
+          <span class="hero-tag" style="border-color: rgba(16, 185, 129, 0.4); color: var(--accent-emerald);">Akselerator Dual GPU T4 × 2 (Kaggle Cloud)</span>
+        </div>
+
+        <h1 class="hero-title">
+          Intelijen Pasar Kerja Global Berbasis <span class="text-gradient">Multi-Task NLP, Cascade Clustering,</span> dan Graph AI
+        </h1>
+
+        <p class="hero-desc">
+          Sistem intelijen ketenagakerjaan terpadu yang mengekstraksi 221.630 entitas kompetensi tak terstruktur, merekonstruksi 3.341 lowongan noise menjadi taksonomi hibrida bernilai ekonomi tinggi, serta mengestimasi koridor rentang upah objektif (P10–P90) sesuai mandat <strong>PP No. 36 Tahun 2021 tentang Pengupahan</strong>.
+        </p>
+
+        <div class="hero-team-card">
+          <div class="team-avatar-group">
+            <div class="team-avatar">RP</div>
+            <div class="team-avatar" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));">RD</div>
+          </div>
+          <div class="team-meta">
+            <div class="team-name">Tim Ditantang Habib — Universitas Negeri Surabaya (UNESA)</div>
+            <div class="team-sub">Rizki Piji Fathoni (24031554029) & Rahmawati Dian Pratiwi (24031554183) • S1 Sains Data FMIPA</div>
+          </div>
+        </div>
+
+        <div class="hero-cta-group" style="display: flex; gap: 14px; align-items: center; margin-top: 10px;">
+          <button class="cta-top-btn" onclick="nav('simulator')" style="padding: 12px 24px; font-size: 0.95rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>Uji Simulator Negosiasi Upah</span>
+          </button>
+          <button class="chart-btn" onclick="nav('metodologi')" style="padding: 12px 22px; font-size: 0.9rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>Pelajari Arsitektur AI</span>
+          </button>
+        </div>
       </div>
 
-      <h1 class="hero-title">
-        Intelijen Pasar Kerja Global Berbasis <span class="text-gradient">Multi-Task NLP, Cascade Clustering,</span> dan Graph AI
-      </h1>
-
-      <p class="hero-desc">
-        Sistem intelijen ketenagakerjaan terpadu yang mengekstraksi 221.630 entitas kompetensi tak terstruktur, merekonstruksi 3.341 lowongan noise menjadi taksonomi hibrida bernilai ekonomi tinggi, serta mengestimasi koridor rentang upah objektif (P10–P90) sesuai mandat <strong>PP No. 36 Tahun 2021 tentang Pengupahan</strong>.
-      </p>
-
-      <div class="hero-team-card">
-        <div class="team-avatar-group">
-          <div class="team-avatar">RP</div>
-          <div class="team-avatar" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));">RD</div>
-        </div>
-        <div class="team-meta">
-          <div class="team-name">Tim Ditantang Habib — Universitas Negeri Surabaya (UNESA)</div>
-          <div class="team-sub">Rizki Piji Fathoni (24031554029) & Rahmawati Dian Pratiwi (24031554183) • S1 Sains Data FMIPA</div>
+      <!-- RIGHT SIDE: INTERACTIVE 3D GRAPH HOLOGRAM STAGE -->
+      <div class="hero-main-right">
+        <div class="graph-hologram-stage" id="graph-stage" title="Arahkan kursor untuk memutar 3D Knowledge Graph secara interaktif">
+          <canvas id="graph-mesh-canvas"></canvas>
+          <div class="holo-orbit-ring orbit-1"></div>
+          <div class="holo-orbit-ring orbit-2"></div>
+          <div class="holo-scan-beam"></div>
+          <div class="holo-landmark-tag" style="top:18px; left:12px;">TOPOLOGY: PMI GRAPH [ACTIVE]</div>
+          <div class="holo-landmark-tag" style="bottom:18px; right:12px;">STACKING: R² 0.6638 [OPTIMAL]</div>
+          <div class="holo-landmark-tag" style="top:115px; right:-10px;">BRIDGE NODES: 10 HUBS</div>
+          <div class="holo-landmark-tag" style="bottom:95px; left:-10px;">PP 36/2021: COMPLIANT</div>
         </div>
       </div>
     </div>
@@ -291,97 +326,230 @@
   </section>
 
   <!-- ============================================================================
-       TAB 2: EKSPLORASI DATA (EDA)
+       TAB 2: EKSPLORASI DATA (EDA) DENGAN INSIGHT & INTERPRETASI ANALITIS
        ============================================================================ -->
   <section id="tab-eda" class="tab-content">
     <div class="section-header">
       <span class="section-tag">Exploratory Data Analysis</span>
       <h2 class="section-title">Eksplorasi Karakteristik dan Asimetri Pasar Kerja</h2>
       <p class="section-subtitle">
-        Investigasi empiris terhadap 123.849 baris data mentah dan 10.000 sampel representatif terstratifikasi mengungkap asimetri informasi dan heteroskedastisitas kompensasi.
+        Investigasi empiris terhadap 123.849 baris data mentah dan 10.000 sampel representatif terstratifikasi mengungkap asimetri informasi, disparitas sektoral, dan kendala komputasi pemodelan.
       </p>
     </div>
 
-    <!-- PLOTLY EMBED 1: HEATMAP -->
+    <!-- VISUALISASI 1: HEATMAP INDUSTRI VS SENIORITAS -->
     <div class="chart-container-card">
       <div class="chart-header">
         <h3>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg>
-          Peta Korelasi Interaktif: Sektor Industri vs Tingkat Senioritas
+          Visualisasi 1: Peta Korelasi Industri vs Jenjang Senioritas Karir
         </h3>
-        <div class="chart-controls">
-          <span class="badge badge-core">Interactive Plotly Engine</span>
-        </div>
+        <span class="badge badge-core">Interactive Heatmap</span>
       </div>
       <div class="chart-iframe-wrap">
         <iframe src="exports/plotly_html/eda_industry_seniority_heatmap.html" title="Industry Seniority Heatmap"></iframe>
       </div>
+
+      <!-- INSIGHT & INTERPRETASI ANALITIS -->
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-header-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Insight & Interpretasi Analitis: Struktur Sektoral dan Piramida Karir</span>
+          </div>
+          <span class="badge badge-bridge">Empirical Finding #1</span>
+        </div>
+        <div class="insight-body">
+          <ul class="insight-points">
+            <li class="insight-point-item">
+              <span class="insight-point-bullet">›</span>
+              <div>
+                <strong>Dominasi Sektor Digital dan Agensi Rekrutmen:</strong> Sektor <em>Staffing and Recruiting</em> mendominasi pasar kerja dengan pangsa <strong>19.3%</strong>, disusul oleh <em>IT Services and IT Consulting</em> (<strong>10.7%</strong>), <em>Financial Services</em>, dan <em>Health Care</em>. Ini merefleksikan peran sentral pihak ketiga dan transformasi digital global.
+              </div>
+            </li>
+            <li class="insight-point-item">
+              <span class="insight-point-bullet">›</span>
+              <div>
+                <strong>Konsentrasi Jenjang Karir:</strong> Permintaan pasar kerja membentuk distribusi piramida yang sehat, berpusat pada <strong>Mid-Senior Level (29.8%)</strong> dan <strong>Entry Level (27.2%)</strong>. Jenjang eksekutif tinggi (<em>Director</em> 7.2%, <em>Executive</em> 4.5%) memiliki volume pembukaan yang sangat selektif.
+              </div>
+            </li>
+          </ul>
+          <div class="insight-stat-row">
+            <div class="insight-stat-pill">Staffing & IT Share: <strong>30.0%</strong></div>
+            <div class="insight-stat-pill">Mid-Senior Demand: <strong>29.8%</strong></div>
+            <div class="insight-stat-pill">Executive Demand: <strong>4.5%</strong></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- PLOTLY EMBED 2: SALARY MULTI-DIMENSIONAL -->
+    <!-- VISUALISASI 2: MULTIDIMENSIONAL SALARY VS EXP & EDU -->
     <div class="chart-container-card">
       <div class="chart-header">
         <h3>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-          Distribusi Kompensasi Multidimensi: Pengalaman, Pendidikan, & Industri
+          Visualisasi 2: Distribusi Kompensasi Multidimensi (Pengalaman, Pendidikan, & Industri)
         </h3>
-        <div class="chart-controls">
-          <span class="badge badge-bridge">Kompensasi Tahunan (USD)</span>
-        </div>
+        <span class="badge badge-bridge">Interactive Wage Scatter</span>
       </div>
       <div class="chart-iframe-wrap">
         <iframe src="exports/plotly_html/eda_salary_exp_edu.html" title="Salary vs Experience and Education"></iframe>
       </div>
+
+      <!-- INSIGHT & INTERPRETASI ANALITIS -->
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-header-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Insight & Interpretasi Analitis: Korelasi Pengalaman dan Premi Pendidikan</span>
+          </div>
+          <span class="badge badge-bridge">Empirical Finding #2</span>
+        </div>
+        <div class="insight-body">
+          <ul class="insight-points">
+            <li class="insight-point-item">
+              <span class="insight-point-bullet">›</span>
+              <div>
+                <strong>Korelasi Monotonik Pengalaman Kerja:</strong> Terlihat tren kenaikan kompensasi yang konsisten seiring bertambahnya tahun pengalaman. Pemodelan SHAP mengonfirmasi nilai marjinal riil sebesar <strong>+$1,676.60 per tahun pengalaman</strong>.
+              </div>
+            </li>
+            <li class="insight-point-item">
+              <span class="insight-point-bullet">›</span>
+              <div>
+                <strong>Premi Kualifikasi Pendidikan Lanjut:</strong> Pemegang kualifikasi <em>Master's Degree</em> atau <em>Doctorate (PhD)</em> menikmati premi kompensasi rata-rata <strong>35%–55% lebih tinggi</strong> dibanding <em>Bachelor's Degree</em>, terutama pada sektor teknologi tinggi, analitik data, dan farmasi.
+              </div>
+            </li>
+            <li class="insight-point-item">
+              <span class="insight-point-bullet">›</span>
+              <div>
+                <strong>Disparitas Sektoral:</strong> Sektor <em>Financial Services, Software Engineering,</em> dan <em>Biotechnology</em> mencatat median upah tertinggi (<strong>> $115,000/tahun</strong>), sementara sektor ritel dan administrasi umum mencatat median terendah (< $65,000/tahun).
+              </div>
+            </li>
+          </ul>
+          <div class="insight-stat-row">
+            <div class="insight-stat-pill">Exp Marginal Value: <strong>+$1,676.60/thn</strong></div>
+            <div class="insight-stat-pill">Education Premium: <strong>+35% to +55%</strong></div>
+            <div class="insight-stat-pill">Tech/FinTech Median: <strong>> $115,000</strong></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- ASYMMETRY & SKEWNESS CARDS -->
+    <!-- VISUALISASI 3 & 4 GRID: ASIMETRI MISSING VALUES & SKEWNESS REDUCTION -->
     <div class="grid-2col">
+      <!-- VISUALISASI 3: ASIMETRI MISSING VALUES -->
       <div class="content-card">
         <div class="card-title-row">
-          <h3>Asimetri Informasi Data Pasar Kerja</h3>
-          <span class="badge badge-cert">Missingness Pattern</span>
+          <h3>Visualisasi 3: Asimetri Informasi Data Pasar Kerja</h3>
+          <span class="badge badge-cert">Missingness Asymmetry</span>
         </div>
-        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px;">
-          Evaluasi tabel kekosongan data membuktikan bahwa kolom terstruktur sengaja tidak dicantumkan oleh perekrut:
-        </p>
-        <div class="table-responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Nama Atribut Kolom</th>
-                <th>Persentase Kosong</th>
-                <th>Status Ketersediaan</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><code>skills_list</code></td><td><strong style="color: var(--accent-rose);">98.7%</strong></td><td>Sangat Langka (Asimetris)</td></tr>
-              <tr><td><code>med_salary</code></td><td><strong style="color: var(--accent-rose);">88.4%</strong></td><td>Sangat Langka (Asimetris)</td></tr>
-              <tr><td><code>company_size</code></td><td><strong>52.3%</strong></td><td>Sebagian Kosong</td></tr>
-              <tr><td><code>text_raw</code> (Deskripsi Kerja)</td><td><strong style="color: var(--accent-emerald);">0.0%</strong></td><td>Lengkap 100% (Sumber Emas)</td></tr>
-            </tbody>
-          </table>
+        <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+          <img src="figures/eda_01_missing_values.png" alt="Missing Values Distribution">
+        </div>
+        <div class="insight-card" style="margin-top: 0;">
+          <div class="insight-header">
+            <div class="insight-header-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>Interpretasi Analitis: Urgensi Ekstraksi NLP</span>
+            </div>
+            <span class="badge badge-cert">Data Gap</span>
+          </div>
+          <div class="insight-body">
+            <p>
+              Kolom terstruktur eksplisit seperti <code>skills_list</code> mengalami kelangkaan mencapai <strong>98.7%</strong> dan <code>med_salary</code> kosong <strong>88.4%</strong>. Sebaliknya, teks deskripsi <code>text_raw</code> <strong>100% lengkap (0% missing)</strong>.
+            </p>
+            <p style="margin-top: 6px;">
+              <strong>Implikasi Ilmiah:</strong> Informasi kompetensi sengaja disembunyikan dalam narasi teks bebas, menjustifikasi kewajiban modul <em>Transformer Named Entity Recognition</em> (Task A) untuk mengekstraksi kualifikasi teknis.
+            </p>
+          </div>
         </div>
       </div>
 
+      <!-- VISUALISASI 4: SKEWNESS REDUCTION LOG TRANSFORM -->
       <div class="content-card">
         <div class="card-title-row">
-          <h3>Transformasi Logaritmik Kompensasi</h3>
+          <h3>Visualisasi 4: Stabilisasi Skewness Kompensasi ln(1+y)</h3>
           <span class="badge badge-core">Skewness Reduction</span>
         </div>
-        <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 16px;">
-          <div style="flex: 1; background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); text-align: center;">
-            <div style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: 800; color: var(--accent-rose);">1.343</div>
-            <div style="font-size: 0.78rem; color: var(--text-muted);">Skewness Kompensasi Mentah</div>
+        <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+          <img src="figures/eda_05_salary_distribution.png" alt="Salary Distribution and Log Transform">
+        </div>
+        <div class="insight-card" style="margin-top: 0;">
+          <div class="insight-header">
+            <div class="insight-header-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline></svg>
+              <span>Interpretasi Analitis: Penurunan Skewness 86.8%</span>
+            </div>
+            <span class="badge badge-core">Normal Distribution</span>
           </div>
-          <div style="font-size: 1.5rem; color: var(--accent-cyan);">➔</div>
-          <div style="flex: 1; background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); text-align: center;">
-            <div style="font-family: var(--font-mono); font-size: 1.8rem; font-weight: 800; color: var(--accent-emerald);">0.177</div>
-            <div style="font-size: 0.78rem; color: var(--text-muted);">Skewness ln(1+y) (-86.8%)</div>
+          <div class="insight-body">
+            <p>
+              Distribusi kompensasi mentah menunjukkan kecondongan ekstrim ke kanan (koefisien skewness: <strong>1.343</strong>). Transformasi logaritmik natural $\ln(1+y)$ berhasil menekan skewness menjadi <strong>0.177 (-86.8%)</strong>.
+            </p>
+            <p style="margin-top: 6px;">
+              <strong>Implikasi Ilmiah:</strong> Menghasilkan kurva simetris Gaussian yang memenuhi asumsi <em>homoscedasticity</em> regresi, menstabilkan varians residual, serta memvalidasi korelasi senioritas yang monotonik positif.
+            </p>
           </div>
         </div>
-        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-          Transformasi logaritmik natural menekan skewness sebesar 86.8%, membentuk kurva Gaussian simetris yang memenuhi asumsi homoskedastisitas algoritma regresi pohon tergradien.
-        </p>
+      </div>
+    </div>
+
+    <!-- VISUALISASI 5 & 6 GRID: TOKEN LENGTH CONSTRAINT & WORDCLOUD NOISE -->
+    <div class="grid-2col">
+      <!-- VISUALISASI 5: TOKEN LENGTH CONSTRAINT -->
+      <div class="content-card">
+        <div class="card-title-row">
+          <h3>Visualisasi 5: Kendala 512 Token BERT & Reduksi Boilerplate</h3>
+          <span class="badge badge-hybrid">Sliding Window Stride</span>
+        </div>
+        <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+          <img src="figures/eda1_text_length.png" alt="Text Length Distribution">
+        </div>
+        <div class="insight-card" style="margin-top: 0;">
+          <div class="insight-header">
+            <div class="insight-header-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Interpretasi Analitis: Justifikasi Stride Chunking</span>
+            </div>
+            <span class="badge badge-hybrid">>35% Truncation Risk</span>
+          </div>
+          <div class="insight-body">
+            <p>
+              Rata-rata teks lowongan ~420 kata dengan ekor panjang >1.200 kata. Lebih dari <strong>35% dokumen mentah melampaui batas 512 subword token Transformer</strong> jika tidak dipartisi.
+            </p>
+            <p style="margin-top: 6px;">
+              <strong>Solusi Metodologis:</strong> Penerapan <em>sentence-level stride chunking</em> ($	ext{window}=64, 	ext{stride}=32$) dan pembersihan regex boilerplate mengeliminasi 15-20% karakter derau hukum/EOE tanpa memotong entitas kualifikasi di bagian akhir teks.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUALISASI 6: WORDCLOUD & LEXICAL NOISE -->
+      <div class="content-card">
+        <div class="card-title-row">
+          <h3>Visualisasi 6: Awan Kata & Keterbatasan Unigram Leksikal</h3>
+          <span class="badge badge-bridge">Lexical Noise Analysis</span>
+        </div>
+        <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+          <img src="figures/eda_03_wordcloud.png" alt="Raw WordCloud">
+        </div>
+        <div class="insight-card" style="margin-top: 0;">
+          <div class="insight-header">
+            <div class="insight-header-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><cloud></cloud><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>Interpretasi Analitis: Dominasi Term Institusional</span>
+            </div>
+            <span class="badge badge-bridge">Boilerplate Bias</span>
+          </div>
+          <div class="insight-body">
+            <p>
+              Awan kata menunjukkan bahwa term paling sering muncul adalah kata umum (<em>experience, team, management, skills, work, support</em>). Keahlian teknis bernilai ekonomi tinggi (<em>Kubernetes, PyTorch, CISSP</em>) memiliki frekuensi absolut lebih rendah.
+            </p>
+            <p style="margin-top: 6px;">
+              <strong>Implikasi Ilmiah:</strong> Pendekatan leksikal sederhana terbukti bias terhadap boilerplate. Diperlukan model JobBERT yang dilatih secara kontekstual untuk mendeteksi entitas kompetensi terlepas dari frekuensi kemunculan globalnya.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -787,7 +955,7 @@
        ============================================================================ -->
   <footer class="footer-wrap">
     <div class="footer-left">
-      <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph Logo" style="height: 28px;">
+      <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph Logo" class="hero-brand-logo-img" style="height: 32px;">
       <div>
         <strong>SkillGraph-AI</strong> • Hak Cipta &copy; 2026 Tim Ditantang Habib (UNESA)
       </div>

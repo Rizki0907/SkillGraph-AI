@@ -18,8 +18,7 @@ dashboard/exports/tables_csv/*.parquet
 dashboard/exports/tables_csv/master_jobs_enriched.csv
 
 # Scratch & Temporary
-scratch/Trace/
-scratch/*.tmp
+scratch/
 .tempmediaStorage/
 .user_uploaded/
 
