@@ -22,6 +22,10 @@ scratch/
 .tempmediaStorage/
 .user_uploaded/
 
+# Internal Agent & Guide Documents
+AGENTS.md
+*.pdf
+
 # OS specific
 .DS_Store
 Thumbs.db
