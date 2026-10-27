@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillGraph-AI | Labor Market Intelligence & Wage Analytics Platform</title>
-  <link rel="icon" type="image/jpeg" href="logo/skillgraph_logo_dark.jpg">
+  <link rel="icon" type="image/png" href="logo/skillgraph_logo_dark_transparent.png">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
@@ -23,7 +23,7 @@
     <div class="boot-scanline"></div>
     <div class="boot-header">
       <div class="boot-title">
-        <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph Logo" class="boot-logo-img brand-logo-full">
+        <img src="logo/skillgraph_logo_dark_transparent.png" alt="SkillGraph Logo" class="boot-logo-img brand-logo-full">
         <span>SKILLGRAPH-AI CORE OS</span>
       </div>
       <div class="boot-status">INITIALIZING</div>
@@ -47,7 +47,7 @@
 <header class="top-navbar">
   <div class="nav-container">
     <div class="brand-block" onclick="nav('overview')">
-      <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph-AI Emblem" class="brand-logo-img brand-logo-full">
+      <img src="logo/skillgraph_logo_dark_transparent.png" alt="SkillGraph-AI Emblem" class="brand-logo-img brand-logo-full">
       <div class="brand-title-wrap">
         <div class="brand-text-main">SkillGraph-AI</div>
         <div class="brand-text-sub">LABOR MARKET INTELLIGENCE</div>
@@ -82,7 +82,7 @@
     </nav>
 
     <div class="nav-actions-right">
-      <button class="theme-toggle-btn" id="theme-toggle" title="Alihkan Mode Terang / Gelap">
+      <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" title="Alihkan Mode Terang / Gelap">
         <svg id="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
@@ -115,18 +115,17 @@
     <div class="hero-cyber-frame">
       <div class="hero-glow-blob"></div>
 
-      <!-- LEFT SIDE: LOGO SEJAJAR BADGE, HEADLINE, & ACTIONS -->
+      <!-- LEFT SIDE: UNIFIED CAPSULE BANNER, HEADLINE, & ACTIONS -->
       <div class="hero-main-left">
-        <!-- HEADER ROW: LOGO DI KIRI, BADGE KOMPETISI DI KANAN -->
-        <div class="hero-header-row">
-          <div class="hero-brand-inline">
-            <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph-AI Logo" class="hero-brand-inline-img brand-logo-full">
+        <!-- UNIFIED BRAND LOGO & COMPETITION CAPSULE (MENYATU TANPA KOTAK HITAM) -->
+        <div class="hero-brand-capsule">
+          <div class="hero-brand-logo-slot">
+            <img src="logo/skillgraph_logo_dark_transparent.png" alt="SkillGraph-AI Logo" class="hero-brand-inline-img brand-logo-full">
           </div>
-          <div class="hero-badge-container">
-            <span class="hero-competition-tag">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="14" height="14"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              Kompetisi Nasional GEMATIK VI 2026 • Cabang Data Science
-            </span>
+          <div class="hero-brand-capsule-divider"></div>
+          <div class="hero-competition-slot">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="15" height="15"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>Kompetisi Nasional GEMATIK VI 2026 • Cabang Data Science</span>
           </div>
         </div>
 
@@ -489,7 +488,7 @@
       </div>
     </div>
 
-    <!-- VISUALISASI 3 & 4 GRID: ASIMETRI MISSING VALUES & SKEWNESS REDUCTION -->
+    <!-- VISUALISASI 3 & 4 GRID: ASIMETRI MISSING VALUES & SKEWNESS REDUCTION (FIXED PATH) -->
     <div class="grid-2col">
       <!-- VISUALISASI 3: ASIMETRI MISSING VALUES -->
       <div class="content-card">
@@ -519,14 +518,14 @@
         </div>
       </div>
 
-      <!-- VISUALISASI 4: SKEWNESS REDUCTION LOG TRANSFORM -->
+      <!-- VISUALISASI 4: SKEWNESS REDUCTION LOG TRANSFORM (FIXED IMAGE PATH) -->
       <div class="content-card">
         <div class="card-title-row">
           <h3>Visualisasi 4: Distribusi Kompensasi & Transformasi Log</h3>
           <span class="badge badge-core">Log-Normal Target</span>
         </div>
         <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
-          <img src="figures/eda_02_salary_distribution.png" alt="Salary Distribution">
+          <img src="figures/eda_05_salary_distribution.png" alt="Salary Distribution">
         </div>
         <div class="insight-card" style="margin-top: 0;">
           <div class="insight-header">
@@ -538,7 +537,7 @@
           </div>
           <div class="insight-body">
             <p>
-              Distribusi upah mentah memiliki kemencengan positif tajam (<em>skewness</em> +1.84) akibat segmen gaji eksekutif. Transformasi $\log(1 + y)$ berhasil menekan skewness menjadi <strong>+0.12</strong> (mendekati kurva Gaussian normal).
+              Distribusi upah mentah memiliki kemencengan positif tajam (<em>skewness</em> +1.84) akibat segmen gaji eksekutif. Transformasi logaritmik $\log(1 + y)$ berhasil menekan skewness menjadi <strong>+0.12</strong> (mendekati kurva Gaussian normal).
             </p>
             <p style="margin-top: 6px;">
               <strong>Dampak Regresi:</strong> Transformasi ini menstabilkan variansi residu (<em>homoscedasticity</em>), mencegah dominasi penalti kuadratik pada loss function RMSE regresi stacking ensemble.
@@ -606,6 +605,34 @@
         </div>
       </div>
     </div>
+
+    <!-- VISUALISASI 7: TOP 15 JABATAN PEKERJAAN (TAMBAHAN FUNGSIONAL EMPIRIS) -->
+    <div class="content-card" style="margin-top: 24px;">
+      <div class="card-title-row">
+        <h3>Visualisasi 7: Top 15 Jabatan Pekerjaan Paling Banyak Dibuka</h3>
+        <span class="badge badge-core">Market Occupational Demand</span>
+      </div>
+      <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+        <img src="figures/eda_04_top_titles.png" alt="Top Job Titles Distribution">
+      </div>
+      <div class="insight-card" style="margin-top: 0;">
+        <div class="insight-header">
+          <div class="insight-header-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            <span>Interpretasi Analitis: Konsentrasi Okupasi & Kebutuhan Standarisasi KBJI</span>
+          </div>
+          <span class="badge badge-bridge">Top Roles Analysis</span>
+        </div>
+        <div class="insight-body">
+          <p>
+            Distribusi judul jabatan menunjukkan polarisasi tajam antara peran rekayasa teknis spesifik (<em>Software Engineer, Data Analyst, Cloud Architect</em>) dengan peran operasional/manajerial umum (<em>Project Manager, Account Executive, Operations Manager</em>).
+          </p>
+          <p style="margin-top: 6px;">
+            <strong>Pentingnya Normalisasi NLP:</strong> Ragam penulisan judul jabatan yang sangat bervariasi untuk fungsi pekerjaan serupa membuktikan perlunya ekstraksi entitas kompetensi berbasis NLP dan klastering semantik SBERT untuk mengelompokkan okupasi secara objektif.
+          </p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ============================================================================
@@ -648,7 +675,7 @@
 
         <!-- ROW 1: JOBBERT NER EVALUATION & TOP 10 BRIDGE SKILLS TABLE -->
         <div class="grid-2col">
-          <!-- CARD 1: EVALUASI JOBBERT NER -->
+          <!-- CARD 1: EVALUASI JOBBERT NER DENGAN CONFUSION MATRIX -->
           <div class="content-card">
             <div class="card-title-row">
               <h3>Evaluasi Token Classifier JobBERT NER</h3>
@@ -657,6 +684,9 @@
             <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
               Model mentransformasikan korpus LinkedIn tak terstruktur menjadi <strong>221.630 span entitas</strong> teranotasi BIO (`SKILL`, `KNOWLEDGE`, `CERT`). Dilatih menggunakan 1.000 kalimat anotasi emas Label Studio dan 5.000 kalimat pseudo-labeled.
             </p>
+            <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+              <img src="figures/task_a_confusion_matrix.png" alt="Confusion Matrix Token BIO">
+            </div>
             <div class="table-responsive">
               <table class="data-table">
                 <thead>
@@ -670,12 +700,11 @@
                   <tr><td>Precision</td><td><strong>0.5120</strong></td><td><strong>0.2500</strong></td></tr>
                   <tr><td>Recall</td><td><strong>0.4526</strong></td><td><strong>0.3000</strong></td></tr>
                   <tr><td>F1-Score</td><td><strong style="color: var(--accent-cyan);">0.4805</strong></td><td><strong style="color: var(--accent-emerald);">0.2727</strong></td></tr>
-                  <tr><td>Evaluasi Kelas CERT</td><td colspan="2">Gold Test Spans Imbalanced (O, B-CERT, I-CERT)</td></tr>
                 </tbody>
               </table>
             </div>
-            <div style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
-              📌 <em>Catatan:</em> Metrik strict span-level menuntut pencocokan batas token tepat (exact boundary match) pada kelas sertifikasi langka yang sangat imbalanced.
+            <div style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+              📌 <em>Catatan:</em> Metrik strict span-level menuntut pencocokan batas token tepat pada kelas sertifikasi langka yang sangat imbalanced.
             </div>
           </div>
 
@@ -736,7 +765,7 @@
               Bobot edge graf dikonstruksi berdasarkan matriks <em>Pointwise Mutual Information (PMI)</em> yang mengeliminasi bias keahlian umum:
             </p>
             <div class="math-formula-box">
-              PMI(x, y) = \log_2 rac{P(x, y)}{P(x) \cdot P(y)}
+              PMI(x, y) = \log_2 \frac{P(x, y)}{P(x) \cdot P(y)}
             </div>
             <ul class="insight-points" style="margin-top: 14px;">
               <li class="insight-point-item">
@@ -774,17 +803,20 @@
           </div>
         </div>
 
-        <!-- ROW 1: HDBSCAN VS GMM EVALUATION & CASCADE SUMMARY TABLE -->
+        <!-- ROW 1: HDBSCAN VS GMM EVALUATION & GMM BIC CURVE -->
         <div class="grid-2col">
-          <!-- CARD 1: EVALUASI HDBSCAN VS GMM -->
+          <!-- CARD 1: EVALUASI HDBSCAN VS GMM DENGAN KURVA BIC -->
           <div class="content-card">
             <div class="card-title-row">
-              <h3>Evaluasi Klastering: HDBSCAN vs GMM</h3>
+              <h3>Evaluasi Klastering: HDBSCAN vs GMM (BIC Optimal)</h3>
               <span class="badge badge-hybrid">Stage 1 + Stage 2</span>
             </div>
             <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
-              HDBSCAN memetakan geometri densitas arbitrer dengan sangat baik namun mengabaikan 33.4% lowongan sebagai noise. GMM (8 komponen) digunakan secara sekuensial untuk merekonstruksi titik noise tersebut.
+              HDBSCAN memetakan 41 klaster alami ($Silhouette = 0.5457$) namun menyisakan 33.4% noise. Model GMM 8 komponen dioptimalkan melalui minimasi skor BIC (-2.019.337) untuk menjamin 100% cakupan.
             </p>
+            <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+              <img src="figures/cluster_02_gmm_bic.png" alt="GMM BIC Elbow Curve">
+            </div>
             <div class="table-responsive">
               <table class="data-table">
                 <thead>
@@ -798,19 +830,21 @@
                   <tr><td>Jumlah Klaster / Komponen</td><td><strong>41 Klaster Alami</strong></td><td><strong>8 Komponen Optimal</strong></td></tr>
                   <tr><td>Silhouette Coefficient</td><td><strong style="color: var(--accent-cyan);">0.5457</strong></td><td>0.4033</td></tr>
                   <tr><td>Davies-Bouldin Index</td><td><strong style="color: var(--accent-cyan);">0.5815</strong></td><td>1.5831</td></tr>
-                  <tr><td>Calinski-Harabasz Score</td><td><strong>7,354.18</strong></td><td>Optimal pada k=8</td></tr>
-                  <tr><td>DBCV (Density-Based CV)</td><td><strong>0.2056</strong></td><td>BIC: -2,019,337</td></tr>
+                  <tr><td>Calinski-Harabasz Score</td><td><strong>7,354.18</strong></td><td>BIC: -2,019,337</td></tr>
                   <tr><td>Cakupan Observasi (Coverage)</td><td>66.6% (Noise: 33.4%)</td><td><strong style="color: var(--accent-emerald);">100.0% Penuh</strong></td></tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <!-- CARD 2: TABEL DEKOMPOSISI CASCADE -->
+          <!-- CARD 2: TABEL DEKOMPOSISI CASCADE & 3-PANEL FIGURE -->
           <div class="content-card">
             <div class="card-title-row">
               <h3>Dekomposisi Titik Noise (Cascade Sub-types)</h3>
               <span class="badge badge-hybrid">Shannon Entropy Posterior</span>
+            </div>
+            <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+              <img src="figures/fig_noise_cascade.png" alt="3-Panel Noise Cascade Decomposition">
             </div>
             <div class="table-responsive">
               <table class="data-table">
@@ -830,9 +864,6 @@
                   <tr><td><span class="badge badge-generic">Generic Staffing / Boilerplate</span></td><td>8</td><td>0.08%</td><td>$72,550</td><td>2.38</td></tr>
                 </tbody>
               </table>
-            </div>
-            <div style="margin-top: 14px; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
-              ✨ <strong>Temuan Utama:</strong> Dekomposisi membuktikan bahwa 99.3% titik noise HDBSCAN sebenarnya adalah peran <em>Niche Spesialis</em> dan <em>Hybrid</em> bernilai tinggi, bukan data rusak!
             </div>
           </div>
         </div>
@@ -900,15 +931,15 @@
 
         <!-- ROW 1: 614-D FEATURE FUSION & MODEL LEADERBOARD -->
         <div class="grid-2col">
-          <!-- CARD 1: MATRIKS FUSI 614-D -->
+          <!-- CARD 1: MATRIKS FUSI 614-D & DIAGNOSTIK REGRESI -->
           <div class="content-card">
             <div class="card-title-row">
               <h3>Matriks Fusi Fitur Sekuensial 614-Dimensi</h3>
               <span class="badge badge-core">Zero Data Leakage Split</span>
             </div>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
-              Arsitektur menggabungkan seluruh representasi multimodal ke dalam matriks terpadu 614-D (Train: 6.807, Val: 1.459, Held-out Test: 1.459).
-            </p>
+            <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+              <img src="figures/task_c_stacking_diagnostics.png" alt="Stacking Model Diagnostics Q-Q Plot">
+            </div>
             <div class="table-responsive">
               <table class="data-table">
                 <thead>
@@ -960,7 +991,7 @@
           </div>
         </div>
 
-        <!-- ROW 2: ABLATION STUDY & SHAP MONETARY VALUATION -->
+        <!-- ROW 2: ABLATION STUDY & SHAP BEESWARM / VALUATION -->
         <div class="grid-2col" style="margin-top: 24px;">
           <!-- CARD 3: ABLATION STUDY -->
           <div class="content-card">
@@ -968,7 +999,7 @@
               <h3>Ablation Study: Pembuktian Fusi 614-D</h3>
               <span class="badge badge-core">Error Drop -14.7%</span>
             </div>
-            <div style="height: 240px; position: relative; margin-bottom: 14px;">
+            <div style="height: 220px; position: relative; margin-bottom: 14px;">
               <canvas id="chart-ablation"></canvas>
             </div>
             <div class="table-responsive">
@@ -989,19 +1020,16 @@
                 </tbody>
               </table>
             </div>
-            <p style="font-size: 0.83rem; color: var(--text-secondary); line-height: 1.5; margin-top: 10px;">
-              Fusi representasi sekuensial memangkas galat prediksi sebesar <strong>$3,541/tahun (-14.7%)</strong> dibanding model tabular konvensional.
-            </p>
           </div>
 
-          <!-- CARD 4: SHAP VALUATION -->
+          <!-- CARD 4: SHAP BEESWARM & VALUATION -->
           <div class="content-card">
             <div class="card-title-row">
-              <h3>Valuasi Marjinal Ekonomi SHAP (Top Market Drivers)</h3>
-              <span class="badge badge-bridge">USD per Tahun</span>
+              <h3>Valuasi Marjinal Ekonomi SHAP & Beeswarm Plot</h3>
+              <span class="badge badge-bridge">TreeSHAP Interpretability</span>
             </div>
-            <div style="height: 240px; position: relative; margin-bottom: 14px;">
-              <canvas id="chart-shap"></canvas>
+            <div class="eda-figure-img-wrap" style="margin-bottom: 14px;">
+              <img src="figures/fig_shap_beeswarm.png" alt="SHAP Beeswarm Summary Plot">
             </div>
             <div class="table-responsive">
               <table class="data-table">
@@ -1017,9 +1045,6 @@
                   <tr><td>Lokasi Kerja Terkalibrasi (TE)</td><td><strong>+$5,485.63 / thn</strong></td><td>Geografis</td></tr>
                   <tr><td>Leksikal Arsitektur Sistem Lanjut (`tfidf_5`)</td><td><strong>+$4,721.62 / thn</strong></td><td>Leksikal SVD</td></tr>
                   <tr><td>Leksikal Rekayasa Komputasi (`tfidf_1`)</td><td><strong>+$3,610.74 / thn</strong></td><td>Leksikal SVD</td></tr>
-                  <tr><td>Sektor Industri Terkalibrasi (TE)</td><td><strong>+$2,869.33 / thn</strong></td><td>Industri</td></tr>
-                  <tr><td>Senioritas × Klaster Okupasi</td><td><strong>+$2,816.42 / thn</strong></td><td>Interaksi</td></tr>
-                  <tr><td>Pengalaman × Industri</td><td><strong>+$2,752.51 / thn</strong></td><td>Interaksi</td></tr>
                   <tr><td>Pengalaman Kerja (per Tahun Tambahan)</td><td><strong style="color: var(--accent-emerald);">+$1,676.60 / thn</strong></td><td>Pengalaman</td></tr>
                 </tbody>
               </table>
@@ -1214,30 +1239,31 @@
   </section>
 
   <!-- ============================================================================
-       TAB 5: KEPATUHAN REGULASI & KEBIJAKAN
+       TAB 5: KEPATUHAN REGULASI & KEBIJAKAN SDGS (DEEP DIVE 4 PILAR SDGS)
        ============================================================================ -->
   <section id="tab-regulasi" class="tab-content">
     <div class="section-header">
-      <span class="section-tag">National Policy Alignment</span>
-      <h2 class="section-title">Penyelarasan Regulasi Nasional & Kebijakan SDGs</h2>
+      <span class="section-tag">National Policy & SDGs Alignment</span>
+      <h2 class="section-title">Penyelarasan Regulasi Nasional & 4 Pilar Strategis SDGs 2030</h2>
       <p class="section-subtitle">
-        Bagaimana SkillGraph-AI dioperasionalkan sebagai pedoman baku nasional penyusunan Struktur dan Skala Upah serta modernisasi Klasifikasi Baku Jabatan Indonesia (KBJI).
+        Bagaimana SkillGraph-AI mentransformasikan mandat yuridis PP No. 36 Tahun 2021 tentang Pengupahan dan menyelaraskan solusi kecerdasan buatan ke dalam target spesifik Sustainable Development Goals.
       </p>
     </div>
 
-    <div class="grid-2col">
+    <!-- BAGIAN 1: MANDAT REGULASI NASIONAL -->
+    <div class="grid-2col" style="margin-bottom: 32px;">
       <div class="content-card">
         <div class="card-title-row">
           <h3>Implementasi PP No. 36 Tahun 2021 tentang Pengupahan</h3>
-          <span class="badge badge-bridge">Mandat PP 36/2021</span>
+          <span class="badge badge-bridge">Mandat Yuridis Pasal 21</span>
         </div>
         <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-          <strong>Pasal 21 PP No. 36 Tahun 2021</strong> mewajibkan setiap perusahaan menyusun dan menerapkan <strong>Struktur dan Skala Upah Objektif</strong> dengan memperhatikan golongan, jabatan, masa kerja, pendidikan, dan kompetensi.
+          <strong>Pasal 21 PP No. 36 Tahun 2021</strong> menegaskan kewajiban setiap perusahaan untuk menyusun dan menerapkan <strong>Struktur dan Skala Upah Objektif</strong> dengan memperhatikan golongan, jabatan, masa kerja, pendidikan, dan kompetensi.
         </p>
-        <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border-left: 4px solid var(--accent-emerald); margin-bottom: 16px;">
+        <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border-left: 4px solid var(--accent-emerald);">
           <h4 style="color: var(--accent-emerald); margin-bottom: 6px;">Penyediaan Koridor Upah Objektif Kuantil (P10–P90):</h4>
-          <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
-            Selama ini penetapan batas upah minimum dan maksimum suatu jabatan seringkali bersifat subjektif. Model SkillGraph-AI menetapkan <strong>P10 sebagai batas bawah pengaman</strong> (mencegah pekerja underpaid), <strong>P50 sebagai patokan wajar median industri</strong>, dan <strong>P90 sebagai plafon kompetitif</strong>.
+          <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6;">
+            SkillGraph-AI menyelesaikan kelemahan subjektivitas penentuan upah minimum-maksimum dengan menetapkan <strong>P10 sebagai safety floor</strong> (mencegah pekerja terjerembab pada praktik upah murah), <strong>P50 sebagai benchmark wajar median industri</strong>, dan <strong>P90 sebagai plafon negosiasi kompetitif</strong> berbasis sertifikasi dan bridge skills.
           </p>
         </div>
       </div>
@@ -1248,13 +1274,101 @@
           <span class="badge badge-hybrid">Inovasi BPS & Kemnaker</span>
         </div>
         <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-          Badan Pusat Statistik (BPS) dan Kementerian Ketenagakerjaan (Kemnaker) RI menghadapi tantangan lambatnya pemutakhiran taksonomi okupasi nasional dalam menangkap profesi baru di era kecerdasan artifisial.
+          Badan Pusat Statistik (BPS) dan Kementerian Ketenagakerjaan (Kemnaker) menghadapi tantangan lambatnya siklus revisi manual KBJI dalam menangkap kemunculan okupasi baru di era revolusi kecerdasan artifisial.
         </p>
-        <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple); margin-bottom: 16px;">
+        <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple);">
           <h4 style="color: var(--accent-purple); margin-bottom: 6px;">Dekomposisi Cascade untuk Jabatan Hibrida Baru:</h4>
-          <p style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
-            Metodologi <em>Two-Stage Cascade Clustering</em> mampu memilah lowongan kerja yang belum memiliki kode baku jabatan KBJI dan mengidentifikasi profesi <strong>Hybrid Cross-Functional</strong> baru (misal: <em>AI Ethics Officer, Bio-Cloud Architect</em>) secara otomatis dari penambangan teks bebas.
+          <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.6;">
+            Metodologi <em>Two-Stage Cascade Clustering</em> mampu memilah lowongan kerja teks bebas yang belum memiliki kode baku KBJI dan mengklasifikasikan profesi <strong>Hybrid Cross-Functional</strong> baru (misal: <em>AI Ethics Specialist, Cloud FinOps Architect</em>) dengan premi gaji median tertinggi ($107.930/thn).
           </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAGIAN 2: DEEP DIVE 4 PILAR SDGS (PEMBAHASAN PER-POIN LENGKAP) -->
+    <div class="sdg-section-divider">
+      <h3>Analisis Mendalam 4 Sasaran Sustainable Development Goals (SDGs 2030)</h3>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="grid-2col">
+      <!-- SDG 4 -->
+      <div class="sdg-deep-card" style="border-left: 4px solid #f59e0b;">
+        <div class="sdg-deep-header">
+          <div class="sdg-deep-title-group">
+            <h3>SDG 4: Pendidikan Berkualitas</h3>
+            <div class="sdg-deep-target">Target 4.4: Peningkatan Keterampilan Relevan untuk Pekerjaan Layak</div>
+          </div>
+          <span class="badge badge-bridge" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);">SDG 4</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px;">
+          <strong>Tantangan Ketenagakerjaan:</strong> Tingginya angka pengangguran terdidik dan *curriculum-market mismatch*, di mana lulusan sarjana dan diploma seringkali tidak dibekali keterampilan yang selaras dengan dinamika industri modern.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px;">
+          <strong>Kontribusi Empiris SkillGraph-AI:</strong> Melalui analisis sentralitas graf asosiasi PMI, sistem membuktikan secara kuantitatif bahwa keahlian perantara seperti <strong>Project Management</strong> (Betweenness: 0.28070) dan <strong>Engineering</strong> (0.13090) bertindak sebagai jembatan transit wajib antar domain okupasi.
+        </p>
+        <div style="background: rgba(245, 158, 11, 0.08); padding: 14px; border-radius: var(--radius-sm); border: 1px dashed rgba(245, 158, 11, 0.3);">
+          <strong style="color: #f59e0b; font-size: 0.85rem;">Rekomendasi Kebijakan Kurikulum:</strong> Perguruan tinggi dan vokasi dapat mengadopsi modul *Bridge Skills* ke dalam program Merdeka Belajar Kampus Merdeka (MBKM) untuk memaksimalkan daya serap lulusan baru.
+        </div>
+      </div>
+
+      <!-- SDG 8 -->
+      <div class="sdg-deep-card" style="border-left: 4px solid #10b981;">
+        <div class="sdg-deep-header">
+          <div class="sdg-deep-title-group">
+            <h3>SDG 8: Pekerjaan Layak & Pertumbuhan Ekonomi</h3>
+            <div class="sdg-deep-target">Target 8.5: Lapangan Kerja Penuh, Produktif, dan Upah Setara</div>
+          </div>
+          <span class="badge badge-core" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">SDG 8</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px;">
+          <strong>Tantangan Ketenagakerjaan:</strong> Asimetri informasi upah yang merugikan tenaga kerja (lebih dari 85% lowongan tidak mencantumkan gaji), penentuan upah subjektif, serta ketiadaan dasar valuasi kompetensi yang transparan.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px;">
+          <strong>Kontribusi Empiris SkillGraph-AI:</strong> Menyediakan simulator interval kuantil asimetris ($P_{10}, P_{50}, P_{90}$) berbasis pinball loss dan model Explainable TreeSHAP yang menghitung valuasi riil marjinal (misal: +$1.676,60/tahun per tahun pengalaman, +$4.721,62/tahun untuk arsitektur sistem).
+        </p>
+        <div style="background: rgba(16, 185, 129, 0.08); padding: 14px; border-radius: var(--radius-sm); border: 1px dashed rgba(16, 185, 129, 0.3);">
+          <strong style="color: #10b981; font-size: 0.85rem;">Rekomendasi Kebijakan Upah:</strong> Menyediakan dasar perhitungan objektif bagi serikat buruh dan divisi HRD untuk menyusun skala upah yang adil, non-diskriminatif, dan patuh PP No. 36 Tahun 2021.
+        </div>
+      </div>
+
+      <!-- SDG 9 -->
+      <div class="sdg-deep-card" style="border-left: 4px solid #00d2ff;">
+        <div class="sdg-deep-header">
+          <div class="sdg-deep-title-group">
+            <h3>SDG 9: Industri, Inovasi, & Infrastruktur</h3>
+            <div class="sdg-deep-target">Target 9.5: Penguatan Riset Ilmiah dan Kapabilitas Teknologi Industri</div>
+          </div>
+          <span class="badge badge-bridge" style="background: rgba(0, 210, 255, 0.15); color: #00d2ff; border-color: rgba(0, 210, 255, 0.3);">SDG 9</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px;">
+          <strong>Tantangan Ketenagakerjaan:</strong> Infrastruktur penambangan data tenaga kerja nasional masih bergantung pada survei berkala yang lambat dan belum mampu mengolah korpus teks bebas digital berskala masif.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px;">
+          <strong>Kontribusi Empiris SkillGraph-AI:</strong> Menghadirkan arsitektur multi-task NLP end-to-end yang mengekstrak 221.630 entitas teknis dan merekonstruksi 3.341 lowongan noise HDBSCAN menjadi arketipe *Niche* dan *Hybrid*, membuktikan premi upah multidisipliner sebesar $107.930/tahun.
+        </p>
+        <div style="background: rgba(0, 210, 255, 0.08); padding: 14px; border-radius: var(--radius-sm); border: 1px dashed rgba(0, 210, 255, 0.3);">
+          <strong style="color: #00d2ff; font-size: 0.85rem;">Rekomendasi Modernisasi Sistem:</strong> BPS dan Kemnaker dapat mengintegrasikan arsitektur ini ke dalam Sistem Informasi Pasar Kerja (SIPK) untuk otomatisasi pemantauan kebutuhan talenta nasional.
+        </div>
+      </div>
+
+      <!-- SDG 17 -->
+      <div class="sdg-deep-card" style="border-left: 4px solid #8b5cf6;">
+        <div class="sdg-deep-header">
+          <div class="sdg-deep-title-group">
+            <h3>SDG 17: Kemitraan untuk Mencapai Tujuan</h3>
+            <div class="sdg-deep-target">Target 17.18: Peningkatan Ketersediaan Data Berkualitas dan Transparan</div>
+          </div>
+          <span class="badge badge-hybrid" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6; border-color: rgba(139, 92, 246, 0.3);">SDG 17</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px;">
+          <strong>Tantangan Ketenagakerjaan:</strong> Fragmentasi data dan asimetri informasi yang memisahkan kepentingan akademisi, pemerintah regulator, korporasi pemberi kerja, dan pencari kerja.
+        </p>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px;">
+          <strong>Kontribusi Empiris SkillGraph-AI:</strong> Membangun platform intelijen pasar tenaga kerja berbasis web interaktif terbuka yang dapat diakses oleh seluruh pihak, menyediakan unduhan tabel metrik CSV standar dan artefak model produksi.
+        </p>
+        <div style="background: rgba(139, 92, 246, 0.08); padding: 14px; border-radius: var(--radius-sm); border: 1px dashed rgba(139, 92, 246, 0.3);">
+          <strong style="color: #8b5cf6; font-size: 0.85rem;">Kemitraan Quadruple Helix:</strong> Menghubungkan Kemnaker RI, Asosiasi Pengusaha Indonesia (APINDO), Dewan Pengupahan Nasional, Perguruan Tinggi Negeri/Swasta, dan jutaan tenaga kerja profesional Indonesia.
         </div>
       </div>
     </div>
@@ -1325,7 +1439,7 @@
        ============================================================================ -->
   <footer class="footer-wrap">
     <div class="footer-left">
-      <img src="logo/skillgraph_logo_dark.jpg" alt="SkillGraph Logo" class="hero-brand-inline-img brand-logo-full" style="height: 30px;">
+      <img src="logo/skillgraph_logo_dark_transparent.png" alt="SkillGraph Logo" class="hero-brand-inline-img brand-logo-full" style="height: 28px;">
       <div>
         <strong>SkillGraph-AI</strong> • Hak Cipta &copy; 2026 Tim Ditantang Habib (UNESA)
       </div>
