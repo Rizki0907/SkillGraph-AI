@@ -31,8 +31,8 @@ function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('skillgraph_theme', theme);
 
-  // Dynamic Logo Swap across Navbar and Hero Banner
-  const brandLogos = document.querySelectorAll('.brand-logo-img, .boot-logo-img, .hero-brand-logo-img');
+  // Dynamic Logo Swap across Navbar, Hero Banner, and Footer
+  const brandLogos = document.querySelectorAll('.brand-logo-img, .boot-logo-img, .hero-brand-logo-img, .hero-brand-inline-img, .brand-logo-full');
   const logoSrc = theme === 'light' ? 'logo/skillgraph_logo_light.jpg' : 'logo/skillgraph_logo_dark.jpg';
   brandLogos.forEach(img => {
     img.src = logoSrc;
